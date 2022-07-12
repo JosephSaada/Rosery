@@ -1,0 +1,35 @@
+{
+  "expo": {  
+    "name": "my-project",
+    "slug": "my-project",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon3.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#231F20"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon3.png",
+        "backgroundColor": "#231F20"
+      },
+      "package": "host.exp.exponent"
+    },
+    "web": {
+      "favicon": "./assets/icon3.png"
+    }   
+  } 
+  
+}

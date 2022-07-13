@@ -89,7 +89,7 @@ const Homescreen = () => {
       style = {{
         width: 75,
         height: 75,  
-        marginTop: 20, 
+        marginTop: 25, 
         marginLeft: 20,
       }}  
       />
@@ -99,7 +99,7 @@ const Homescreen = () => {
       <Ionicons 
       name = "chatbubble-sharp" size = {50} color = '#f8f8ff'
       style = {{ 
-        marginTop: 35,  
+        marginTop: 40,  
         marginRight: 30, 
       }}
      /> 
@@ -160,13 +160,13 @@ const Homescreen = () => {
             </View>  
             <Text style={{fontSize: 40, fontWeight: 'bold', color: '#f8f8ff'}}>{card.age}</Text>
         </View> 
-</BoxShadow>
+</BoxShadow> 
         </View>
   ) : 
 ( 
- <View style = {{backgroundColor: "#28282B", height: 875, borderTopLeftRadius: 20,
+ <View style = {{backgroundColor: "#28282B", height: '90%', borderTopLeftRadius: 20,
  borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignItems: 'center', justifyContent: 'center'}}> 
-  <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25}}> Congrats, you're the ugliest one</Text>
+  <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> Congrats, you're the ugliest one</Text>
   </View>  
 )}
       />

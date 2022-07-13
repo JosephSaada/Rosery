@@ -35,7 +35,7 @@
               "client_id": "710721300209-6cjjfoo47kukjfkoti4ao5ijcuhk15tb.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "host.exp.exponent"
+                "bundle_id": "com.roasterino.app"
               }
             }
           ]
@@ -46,7 +46,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:710721300209:android:c77599fbb8fcad653f6b50",
         "android_client_info": {
-          "package_name": "host.exp.exponent"
+          "package_name": "com.roasterino.app"
         }
       },
       "oauth_client": [
@@ -54,7 +54,7 @@
           "client_id": "710721300209-1fjoj51r9v39maed05lenhecao8gs2f0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "host.exp.exponent",
+            "package_name": "com.roasterino.app",
             "certificate_hash": "5d27494070d31cdf8022c30e7e45c2b1b7280f5f"
           }
         },
@@ -79,7 +79,7 @@
               "client_id": "710721300209-6cjjfoo47kukjfkoti4ao5ijcuhk15tb.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "host.exp.exponent"
+                "bundle_id": "com.roasterino.app"
               }
             }
           ]

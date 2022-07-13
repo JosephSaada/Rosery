@@ -1,5 +1,5 @@
 import React from 'react' 
-import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar} from 'react-native'; 
+import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar, ScrollView} from 'react-native'; 
 import {useNavigation} from '@react-navigation/core' 
 import { auth } from '../firebase'  
 import {Ionicons} from "@expo/vector-icons"; 
@@ -20,9 +20,9 @@ const Disclaimer = () => {
       .catch(error => alert(error.message))
   } 
 
-  return (    
+  return (     
     <View style={styles.container}>   
-
+<ScrollView>
     <TouchableOpacity onPress={back} style={{alignSelf: 'flex-start'}} >
        <Ionicons 
       name = "arrow-back" size = {50} color = '#f8f8ff'
@@ -60,7 +60,8 @@ const Disclaimer = () => {
      >
        <Text style={styles.buttonOutlineText}>Sign out</Text>
      </TouchableOpacity> 
-    </View> 
+    </ScrollView>  
+    </View>
   )
 }
 

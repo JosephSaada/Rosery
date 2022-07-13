@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"; 
-import {getFirestore} from 'firebase/firestore';  
-
+import {getFirestore, FirestoreSettings, connectFirestoreEmulator} from 'firebase/firestore';   
+import firebase from 'firebase/app' 
+import { firestore } from '@firebase/firestore';  
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,23 +23,25 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase 
-
-//const analytics = getAnalytics(app); 
-//const auth = getAuth();
   
 const app = initializeApp(firebaseConfig);
 
-
 const auth = getAuth(app); 
 
-//const db = getFirestore();  
-
-const db = getFirestore(app, {
+const db = getFirestore(app, {   
   experimentalForceLongPolling: true, 
   //experimentalAutoDetectLongPolling: true,
-  useFetchStreams: false, 
-}); 
+  //useFetchStreams: false, 
+});   
 
-//firebase.firestore.setLogLevel('debug');
+//connectFirestoreEmulator(db, 'localhost', 8080);
+
+//port number 9099 auth 
+//port number functions 5001 
+//port number firestore emulator 8080 
+//port number database 9000 
+//port number hosting 5000 
+//pubsub 8085 
+//storage 9199
 
 export { auth, db }

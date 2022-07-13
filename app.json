@@ -1,5 +1,5 @@
 {
-  "expo": {  
+  "expo": {
     "name": "my-project",
     "slug": "my-project",
     "version": "1.0.0",
@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "host.exp.exponent"
     },
     "android": {
       "adaptiveIcon": {
@@ -29,7 +30,6 @@
     },
     "web": {
       "favicon": "./assets/icon3.png"
-    }   
-  } 
-  
+    }
+  }
 }

@@ -1,9 +1,10 @@
 const { getDefaultConfig } = require("metro-config");
-const { resolver: defaultResolver } = getDefaultConfig.getDefaultValues();
-exports.resolver = {
+const { resolver: defaultResolver } = getDefaultConfig.getDefaultValues(); 
+
+exports.resolver = { 
   ...defaultResolver,
   sourceExts: [
     ...defaultResolver.sourceExts,
-    "cjs",
+    "cjs", 
   ],
 };

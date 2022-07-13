@@ -1,10 +1,47 @@
 {
   "project_info": {
     "project_number": "710721300209",
+    "firebase_url": "https://gamo-7dec8-default-rtdb.firebaseio.com",
     "project_id": "gamo-7dec8",
     "storage_bucket": "gamo-7dec8.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710721300209:android:8823accc55b32f5b3f6b50",
+        "android_client_info": {
+          "package_name": "com.roasterino.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710721300209-2qhqp6casbluvumnsgs5sm14rghibuij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7JYwOt7bZG_9A41qBJgXh9m_ksmf6-XU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710721300209-2qhqp6casbluvumnsgs5sm14rghibuij.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "710721300209-6cjjfoo47kukjfkoti4ao5ijcuhk15tb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.exponent"
+              }
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:710721300209:android:c77599fbb8fcad653f6b50",

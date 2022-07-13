@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>710721300209-6cjjfoo47kukjfkoti4ao5ijcuhk15tb.apps.googleusercontent.com</string>
+	<string>710721300209-e1lsddtkemc16nqn3nv4novssj83v7bf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.710721300209-6cjjfoo47kukjfkoti4ao5ijcuhk15tb</string>
+	<string>com.googleusercontent.apps.710721300209-e1lsddtkemc16nqn3nv4novssj83v7bf</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>710721300209-1fjoj51r9v39maed05lenhecao8gs2f0.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAGYYsj5NefjnCdoansLj0EGuYFuKpxKqU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>host.exp.exponent</string>
+	<string>com.roasterino.app</string>
 	<key>PROJECT_ID</key>
 	<string>gamo-7dec8</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:710721300209:ios:5ee120b864f9dbdc3f6b50</string>
+	<string>1:710721300209:ios:1bf6b319e023fed03f6b50</string>
+	<key>DATABASE_URL</key>
+	<string>https://gamo-7dec8-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

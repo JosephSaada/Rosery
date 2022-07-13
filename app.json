@@ -19,14 +19,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "host.exp.exponent"
+      "bundleIdentifier": "com.roasterino.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon3.png",
         "backgroundColor": "#231F20"
       },
-      "package": "host.exp.exponent"
+      "package": "com.roasterino.app"
     },
     "web": {
       "favicon": "./assets/icon3.png"

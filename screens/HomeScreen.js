@@ -9,21 +9,6 @@ import { onSnapshot, doc, collection } from '@firebase/firestore';
 import {db} from "../firebase"; 
 import { async } from '@firebase/util';
 
-const DUMMY_DATA = [ 
-  {name:"Anakin Skywalker", job: "Killing kids", 
-  photoURL: "https://github.com/JosephSaada/ShamelessImagehosting/blob/main/711.png?raw=true", age: 27,  
-  id: 123,
-  },
-  {name:"Emily Bregins", job: "Being a bitch", 
-  photoURL: "https://picsum.photos/id/1011/200/300", age: 40,  
-  id: 456,
-  }, 
-  {name:"Maximus Optimus", job: "Being a bitch with four legs", 
-  photoURL: "https://picsum.photos/id/237/200/300", age: 21,  
-  id: 789,
-  }, 
-  ];
-
 
 const Homescreen = () => { 
     const navigation = useNavigation();  

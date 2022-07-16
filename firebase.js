@@ -1,10 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"; 
-import {getFirestore, FirestoreSettings, connectFirestoreEmulator, initializeFirestore} from 'firebase/firestore';   
-import firebase from 'firebase/app' 
-import { firestore } from '@firebase/firestore';   
-import {decode, encode} from 'base-64'
+import { getAuth,initializeAuth } from "firebase/auth"; 
+import {initializeFirestore} from 'firebase/firestore';     
+import {decode, encode} from 'base-64' 
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
+import {getReactNativePersistence} from 'firebase/auth/react-native';
 
 if (!global.btoa) {  global.btoa = encode }
 
@@ -31,7 +31,7 @@ const firebaseConfig = {
   
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app); 
+const auth = initializeAuth(app, {persistence: getReactNativePersistence(AsyncStorage)}); 
 
 const db = initializeFirestore(app, {   
   experimentalForceLongPolling: true, 

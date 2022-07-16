@@ -6,9 +6,23 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/core'  
 import { doc, serverTimestamp, setDoc} from '@firebase/firestore'; 
 import {db} from "../firebase";  
+import {getStorage, ref, uploadBytes, getDownloadURL} from 'firebase/storage'
+import { async } from '@firebase/util';
 
 const ModalScreen = () => {      
-  const navigation = useNavigation()
+  const navigation = useNavigation() 
+
+  const [url, setURL] = useState(); 
+
+  useEffect(()=> { 
+    const func = async () => {   
+      const storage = getStorage();  
+      const reference = ref(storage,String(auth.currentUser.uid)) 
+      await getDownloadURL(reference).then((x) => { 
+        setURL(x)
+      })
+    }
+  })
 
   var str = (auth.currentUser?.email).split("@")[0]; 
 
@@ -56,15 +70,18 @@ const ModalScreen = () => {
 
     console.log(result);
 
-    if (!result.cancelled) {
+    if (!result.cancelled) { 
+      const storage = getStorage();  
+      const spaceref = ref(storage,String(auth.currentUser.uid));  
+      const img = await fetch(result.uri)  
+      const bytes = await img.blob()
+      await uploadBytes(spaceref, bytes)
       setImage(result.uri); 
-
     }
   };
 
   return ( 
     <View style={styles.container}>  
-    
       <Image   
       source={require('../Roasterino.png')} 
       style={{width: 500, height: 100, resizeMode: 'contain', backgroundColor: '#231F20', borderColor: '#28282B', borderWidth: 2}} 
@@ -80,7 +97,7 @@ const ModalScreen = () => {
         >
           <Text style={styles.buttonText}>Pick an Image</Text>
         </TouchableOpacity>   
-        {image && <Image source={{ uri: image }} />} 
+        {image && <Image source={{ uri: url}} />} 
         </View>
 
         <Text style={styles.InputNames}>Full Name</Text>  
@@ -100,7 +117,7 @@ const ModalScreen = () => {
           onChangeText={setjob}
           placeholder ="enter the thing sucking your soul"  
           placeholderTextColor="#f8f8ff"   
-          maxLength={50}
+          maxLength={30}
           style={styles.input}
         />   
 

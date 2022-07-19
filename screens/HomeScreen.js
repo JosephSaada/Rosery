@@ -5,14 +5,14 @@ import { auth } from '../firebase'
 import {Ionicons, AntDesign, Entypo} from "@expo/vector-icons"; 
 import Swiper from 'react-native-deck-swiper'; 
 import {BoxShadow} from 'react-native-shadow'
-import { onSnapshot, doc, collection } from '@firebase/firestore'; 
+import { onSnapshot, doc, collection, getDocs, setDoc, query, where } from '@firebase/firestore'; 
 import {db} from "../firebase"; 
 import { async } from '@firebase/util';
 
-
 const Homescreen = () => { 
     const navigation = useNavigation();  
-    const [profiles, setProfiles] = useState([]);
+    const [profiles, setProfiles] = useState([]); 
+
     //const swiperef = useRef(null); 
 
      useLayoutEffect(() => 
@@ -24,8 +24,17 @@ const Homescreen = () => {
     useEffect(() => { 
       let unsub; 
 
-      const fetchCards = async () => { 
-        unsub = onSnapshot(collection(db, 'users'), snapshot => {  
+      const fetchCards = async () => {  
+        const passes = await getDocs(collection(db,'users',auth.currentUser.uid, 'passes')).then(
+          snapshot=> snapshot.docs.map((doc) => doc.id)
+        ) 
+        const swipes = await getDocs(collection(db,'users',auth.currentUser.uid, 'swipes')).then(
+          snapshot=> snapshot.docs.map((doc) => doc.id)
+        ) 
+        const passedUserIds = passes.length > 0 ? passes : ['test']; 
+        const swipedUserIds = swipes.length > 0 ? swipes : ['test'];
+
+        unsub = onSnapshot(query(collection(db, 'users'), where('id', 'not-in', [...passedUserIds, ...swipedUserIds])), snapshot => {  
           setProfiles(snapshot.docs
             .filter((doc)=>doc.id !== auth.currentUser.uid)
             .map(doc => ({ 
@@ -36,8 +45,8 @@ const Homescreen = () => {
       } 
       fetchCards(); 
       return unsub;
-    }, [])
-
+    }, [db])
+ 
     const handleChat = () => { 
       navigation.replace("ChatScreen")
     } 
@@ -57,11 +66,15 @@ const Homescreen = () => {
       y:3, 
     } 
 
-    const swipeLeft = async() => { 
-
+    const swipeLeft = (cardIndex) => { 
+      if (!profiles[cardIndex]) return; 
+      const userSwiped = profiles[cardIndex]; 
+      setDoc(doc(db, 'users', auth.currentUser.uid, 'passes', userSwiped.id), userSwiped)
     }
-    const swipeRight = async() => { 
-
+    const swipeRight = async(cardIndex) => { 
+      if (!profiles[cardIndex]) return; 
+      const userSwiped = profiles[cardIndex]; 
+      setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped)
     }
 
   return ( 
@@ -104,17 +117,17 @@ const Homescreen = () => {
       cardIndex={0}  
       animateCardOpacity 
       verticalSwipe={false}   
-      /*
-      onSwipedLeft={()=> { 
-        console.log('left');
+      onSwipedLeft={(cardIndex)=> { 
+        console.log('left'); 
+        swipeLeft(cardIndex);
       }} 
-      onSwipedRight={()=> { 
-        console.log('right');
+      onSwipedRight={(cardIndex)=> { 
+        console.log('right'); 
+        swipeRight(cardIndex);
       }} 
-      */
       overlayLabels={{ 
         left:{ 
-           title: "EH", 
+           title: "NAH", 
            style: { 
             label: { 
               textAlign: "right", 
@@ -123,7 +136,7 @@ const Homescreen = () => {
            },
         },  
         right: { 
-          title: "UGLY", 
+          title: "ROAST", 
           style: { 
             label: { 
               textAlign: "left", 
@@ -133,10 +146,10 @@ const Homescreen = () => {
         }
       }}
       renderCard={(card) => card ? (
-        <View key = {card.id} style = {{backgroundColor: "#28282B", height: 775, borderTopLeftRadius: 20,
+        <View key = {card.id} style = {{backgroundColor: "#28282B", height: '80%', borderTopLeftRadius: 20,
         borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}>
           <Image style = {{height: 775, borderTopLeftRadius: 20,
-        borderTopRightRadius: 20}} source={{uri: card.photoURL}}/>   
+        borderTopRightRadius: 20}} source={{uri: card.photoURL}}/>    
 <BoxShadow setting={shadowOpt}>
         <View style={{backgroundColor: '#28282B',  padding: 15, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, height: 100, textAlign: 'center', flexDirection:"row", justifyContent:'space-between'}}>
             <View>
@@ -151,7 +164,7 @@ const Homescreen = () => {
 ( 
  <View style = {{backgroundColor: "#28282B", height: '90%', borderTopLeftRadius: 20,
  borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignItems: 'center', justifyContent: 'center'}}> 
-  <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> Congrats, you're the ugliest one</Text>
+  <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> There's no one left to roast</Text>
   </View>  
 )}
       />

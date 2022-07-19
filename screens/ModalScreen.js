@@ -4,6 +4,7 @@ import { auth } from '../firebase'
 import { useState, useEffect } from 'react';
 import * as ImagePicker from 'expo-image-picker'; 
 import { useNavigation } from '@react-navigation/core'  
+import { NavigationContainer } from '@react-navigation/native';
 import { doc, serverTimestamp, setDoc} from '@firebase/firestore'; 
 import {db} from "../firebase";  
 import {getStorage, ref, uploadBytes, getDownloadURL} from 'firebase/storage'
@@ -13,6 +14,14 @@ const ModalScreen = () => {
   const navigation = useNavigation() 
 
   const [url, setURL] = useState(); 
+
+  navigation.addListener('beforeRemove', (e) => {
+    e.preventDefault();   
+    const action = e.data.action; 
+    if (!incomplete) {
+    navigation.dispatch(action) 
+  }
+  })
 
   useEffect(()=> { 
     const func = async () => {   
@@ -136,10 +145,9 @@ const ModalScreen = () => {
  <View style={styles.buttonContainer2}>
         <TouchableOpacity 
         disabled={incomplete}  
-        style={styles.button2} 
-        onPress={updateProfile} 
+        style={styles.button2}  
+        onPress={updateProfile}  
         > 
-        
           <Text style={styles.buttonText}>Update</Text>
         </TouchableOpacity>   
         </View>

@@ -85,7 +85,7 @@ const LoginScreen = () => {
         </TouchableOpacity> 
 
         <Text style={{fontSize:20, color: "#f8f8ff", textAlign: "center", fontWeight: "bold", marginTop: 10}}> 
-        May the least ugly one win
+        Where nothing is at steak
     </Text>
       </View>
     </View>

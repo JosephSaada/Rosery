@@ -5,21 +5,23 @@ import { auth } from '../firebase'
 import {Ionicons, AntDesign, Entypo} from "@expo/vector-icons"; 
 import Swiper from 'react-native-deck-swiper'; 
 import {BoxShadow} from 'react-native-shadow'
-import { onSnapshot, doc, collection, getDocs, setDoc, query, where } from '@firebase/firestore'; 
+import { onSnapshot, doc, collection, getDocs, setDoc, query, where, getDoc, serverTimestamp} from '@firebase/firestore'; 
 import {db} from "../firebase"; 
 import { async } from '@firebase/util';
+import generateId from '../lib/generateId'; 
 
-const Homescreen = () => { 
+const Homescreen = () => {  
     const navigation = useNavigation();  
-    const [profiles, setProfiles] = useState([]); 
+    const [profiles, setProfiles] = useState([]);  
 
-    //const swiperef = useRef(null); 
+    //const swiperef = useRef(null);  
 
-     useLayoutEffect(() => 
+     useLayoutEffect(() =>  
       onSnapshot(doc(db, 'users', auth.currentUser.uid), snapshot => {  
         if (!snapshot.exists()) 
         navigation.navigate("Modal")
-      }), []); 
+      }), []);  
+
 
     useEffect(() => { 
       let unsub; 
@@ -46,7 +48,9 @@ const Homescreen = () => {
       fetchCards(); 
       return unsub;
     }, [db])
- 
+    
+    //console.log(profiles) 
+
     const handleChat = () => { 
       navigation.replace("ChatScreen")
     } 
@@ -71,13 +75,35 @@ const Homescreen = () => {
       const userSwiped = profiles[cardIndex]; 
       setDoc(doc(db, 'users', auth.currentUser.uid, 'passes', userSwiped.id), userSwiped)
     }
-    const swipeRight = async(cardIndex) => { 
-      if (!profiles[cardIndex]) return; 
+    const swipeRight = async(cardIndex) => {  
+      if (!profiles[cardIndex]) return;  
+
       const userSwiped = profiles[cardIndex]; 
-      setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped)
+      const loggedInProfile = await (await getDoc(doc(db, 'users', auth.currentUser.uid))).data();
+
+      getDoc(doc(db, 'users', userSwiped.id, 'swipes', auth.currentUser.uid)).then( 
+        (documentSnapshot) => { 
+          if (documentSnapshot.exists()) { 
+            setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped) 
+            setDoc(doc(db, 'matches', generateId(auth.currentUser.uid, userSwiped.id)), { 
+              users: { 
+                [auth.currentUser.uid]: loggedInProfile, 
+                [userSwiped.id]: userSwiped
+              }, 
+              usersMatched: [auth.currentUser.uid , userSwiped.id], 
+              timestamp: serverTimestamp(),
+            }) ;
+            navigation.navigate('Match', { 
+              loggedInProfile, userSwiped,
+            })
+          } else { 
+            setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped)
+          }
+        }
+      )
     }
 
-  return ( 
+  return (  
      <View style={styles.container}>   
 
       <View style={{flexDirection:"row", justifyContent:'space-between'}} >
@@ -144,16 +170,17 @@ const Homescreen = () => {
             }
           }
         }
-      }}
-      renderCard={(card) => card ? (
+      }} 
+      
+      renderCard={(card) => card ? (   
         <View key = {card.id} style = {{backgroundColor: "#28282B", height: '80%', borderTopLeftRadius: 20,
-        borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}>
+        borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}> 
           <Image style = {{height: 775, borderTopLeftRadius: 20,
-        borderTopRightRadius: 20}} source={{uri: card.photoURL}}/>    
+        borderTopRightRadius: 20}} source={{uri: card.photoURL}}/>     
 <BoxShadow setting={shadowOpt}>
         <View style={{backgroundColor: '#28282B',  padding: 15, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, height: 100, textAlign: 'center', flexDirection:"row", justifyContent:'space-between'}}>
             <View>
-              <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name}</Text>
+              <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name}</Text> 
               <Text style = {{ fontSize: 20, color: '#f8f8ff'}}>{card.job}</Text>
             </View>  
             <Text style={{fontSize: 40, fontWeight: 'bold', color: '#f8f8ff'}}>{card.age}</Text>

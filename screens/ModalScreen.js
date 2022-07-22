@@ -27,10 +27,11 @@ const ModalScreen = () => {
     const func = async () => {   
       const storage = getStorage();  
       const reference = ref(storage,String(auth.currentUser.uid)) 
-      await getDownloadURL(reference).then((x) => { 
+      await getDownloadURL(reference).then((x) => {  
         setURL(x)
       })
-    }
+    } 
+    func();
   })
 
   var str = (auth.currentUser?.email).split("@")[0]; 
@@ -47,7 +48,7 @@ const ModalScreen = () => {
     setDoc(doc(db, 'users', auth.currentUser.uid), {   
       id: auth.currentUser.uid, 
       name: name, 
-      photoURL: image, 
+      photoURL: url, 
       job: job, 
       age: age, 
       timestamp: serverTimestamp(),
@@ -85,7 +86,7 @@ const ModalScreen = () => {
       const img = await fetch(result.uri)  
       const bytes = await img.blob()
       await uploadBytes(spaceref, bytes)
-      setImage(result.uri); 
+      setImage(result.uri);  
     }
   };
 
@@ -105,9 +106,9 @@ const ModalScreen = () => {
           style={styles.button}
         >
           <Text style={styles.buttonText}>Pick an Image</Text>
-        </TouchableOpacity>   
-        {image && <Image source={{ uri: url}} />} 
-        </View>
+        </TouchableOpacity>    
+        {image && <Image source={{ uri: url}} />}  
+        </View> 
 
         <Text style={styles.InputNames}>Full Name</Text>  
         <TextInput 

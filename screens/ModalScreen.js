@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, Button, Platform, TextInput, TouchableOpacity, StatusBar} from 'react-native'
+import { View, Text, StyleSheet, Image, Button, Platform, TextInput, TouchableOpacity, StatusBar, KeyboardAvoidingView, ScrollView} from 'react-native'
 import React from 'react'  
 import { auth } from '../firebase' 
 import { useState, useEffect } from 'react';
@@ -90,8 +90,9 @@ const ModalScreen = () => {
     }
   };
 
-  return ( 
-    <View style={styles.container}>  
+  return (  
+    <ScrollView>
+    <KeyboardAvoidingView style={styles.container}>  
       <Image   
       source={require('../Roasterino.png')} 
       style={{width: 500, height: 100, resizeMode: 'contain', backgroundColor: '#231F20', borderColor: '#28282B', borderWidth: 2}} 
@@ -152,7 +153,8 @@ const ModalScreen = () => {
           <Text style={styles.buttonText}>Update</Text>
         </TouchableOpacity>   
         </View>
-    </View> 
+    </KeyboardAvoidingView>  
+    </ScrollView>
   ) 
 } 
 

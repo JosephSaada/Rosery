@@ -12,7 +12,12 @@ import generateId from '../lib/generateId';
 
 const Homescreen = () => {  
     const navigation = useNavigation();  
-    const [profiles, setProfiles] = useState([]);  
+    const [profiles, setProfiles] = useState([]);   
+
+    'use strict';
+    var React = require('react-native');
+    var {Dimensions} = React; 
+    var width = Dimensions.get('window').width;
 
     //const swiperef = useRef(null);  
 
@@ -60,7 +65,7 @@ const Homescreen = () => {
     }
 
     const shadowOpt = {
-      width: 485, // 485
+      width: width*0.93, // 485
       height: 100,
       color:"#000",
       border:2,
@@ -132,7 +137,6 @@ const Homescreen = () => {
     </View>
      <Text style={{textAlign: 'center', color:'#f8f8ff', fontSize: 25}}>User: {(auth.currentUser?.email).split("@")[0]} </Text>
 
-
      <View style = {{flex: 1, marginTop: -45}}> 
       <Swiper  
       //ref = {swiperef}
@@ -173,12 +177,12 @@ const Homescreen = () => {
       }} 
       
       renderCard={(card) => card ? (   
-        <View key = {card.id} style = {{backgroundColor: "#28282B", height: '80%', borderTopLeftRadius: 20,
+        <View key = {card.id} style = {{borderTopLeftRadius: 20,
         borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}> 
-          <Image style = {{height: 775, borderTopLeftRadius: 20,
+          <Image style = {{height: '85%', width: width*.93, borderTopLeftRadius: 20,
         borderTopRightRadius: 20}} source={{uri: card.photoURL}}/>     
 <BoxShadow setting={shadowOpt}>
-        <View style={{backgroundColor: '#28282B',  padding: 15, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, height: 100, textAlign: 'center', flexDirection:"row", justifyContent:'space-between'}}>
+        <View style={{backgroundColor: '#28282B', padding: 15, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, height:100, textAlign: 'center', flexDirection:"row", justifyContent:'space-between',  width: width*.93 }}>
             <View>
               <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name}</Text> 
               <Text style = {{ fontSize: 20, color: '#f8f8ff'}}>{card.job}</Text>

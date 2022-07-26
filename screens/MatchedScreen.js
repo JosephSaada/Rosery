@@ -24,7 +24,7 @@ const MatchedScreen = () => {
     </Text>  
     <TouchableOpacity style={{width: '60%',padding: 15, borderRadius: 10, alignItems: 'center',  marginTop: 10, alignSelf: 'center', backgroundColor: '#f8f8ff'}}
         onPress={()=> {
-            navigation.navigate("HomeScreen")
+            navigation.navigate("Homescreen")
             navigation.navigate("ChatScreen")
         }}
         > 

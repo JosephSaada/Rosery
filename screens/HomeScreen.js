@@ -17,7 +17,7 @@ const Homescreen = () => {
     'use strict';
     var React = require('react-native');
     var {Dimensions} = React; 
-    var width = Dimensions.get('window').width;
+    var width = Dimensions.get('window').width; 
 
     //const swiperef = useRef(null);  
 

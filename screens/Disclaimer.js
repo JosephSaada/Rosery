@@ -7,8 +7,6 @@ import { onSnapshot, collection, query} from '@firebase/firestore';
 import {db} from "../firebase";  
 import Swiper from 'react-native-deck-swiper';
 
- 
-
 const Disclaimer = () => {   
 
   'use strict';

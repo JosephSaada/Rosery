@@ -1,22 +1,13 @@
 import React from 'react' 
 import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar } from 'react-native'; 
-import {useNavigation} from '@react-navigation/core' 
+import Header from '../components/Header'; 
+import ChatList from '../components/ChatList';
 
 const ChatScreen = () => { 
-  const navigation = useNavigation(); 
-
-  const back = () => { 
-    navigation.replace("Homescreen")
-  }
-
-  return ( 
-    <View style={styles.container}>
-       <TouchableOpacity
-       onPress={back}
-       style={styles.button}
-     >
-       <Text style={styles.buttonText}>Back</Text>
-     </TouchableOpacity>
+  return (  
+    <View style={styles.container}> 
+     <Header title = 'Chat' unmatch> </Header> 
+     <ChatList />
     </View>
   )
 }

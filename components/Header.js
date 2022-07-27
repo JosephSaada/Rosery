@@ -1,13 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react' 
 import {Ionicons} from "@expo/vector-icons"; 
-import {useNavigation} from '@react-navigation/core' 
+import {useNavigation} from '@react-navigation/core'  
 
-const Header = ({title, unmatch}) => { 
-    const navigation = useNavigation(); 
+const Header = ({title}) => { 
+    const navigation = useNavigation();  
+
     const back = () => { 
         navigation.replace("Homescreen")
-      }
+      } 
     
 
   return (
@@ -21,17 +22,8 @@ const Header = ({title, unmatch}) => {
      </TouchableOpacity>    
      
      <Text style={{fontSize:40, color: "#f8f8ff", marginTop: 27,fontWeight: "bold"}}>Chat</Text>  
-     
-
-     {unmatch && (
-     <TouchableOpacity onPress={back}>
-       <Ionicons 
-      name = "person-remove-outline" size = {40} color = '#f8f8ff' style = {{marginRight: 20,  marginTop: 27,}} />
-     </TouchableOpacity>   
-      )} 
-      {!unmatch && (
-     <Text></Text>   
-      )}
+     <Text>                   </Text>   
+      
     </View> 
   )
 }

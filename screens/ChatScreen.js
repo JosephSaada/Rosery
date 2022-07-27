@@ -6,7 +6,7 @@ import ChatList from '../components/ChatList';
 const ChatScreen = () => { 
   return (  
     <View style={styles.container}> 
-     <Header title = 'Chat' unmatch> </Header> 
+     <Header title = 'Chat'> </Header> 
      <ChatList />
     </View>
   )

@@ -53,8 +53,6 @@ const Homescreen = () => {
       fetchCards(); 
       return unsub;
     }, [db])
-    
-    //console.log(profiles) 
 
     const handleChat = () => { 
       navigation.replace("ChatScreen")

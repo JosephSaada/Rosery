@@ -109,9 +109,8 @@ const Disclaimer = () => {
         </View>
        ): 
        ( 
-        <View style = {{backgroundColor: "#28282B", height: '90%', borderTopLeftRadius: 20,
-        borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignItems: 'center', justifyContent: 'center'}}> 
-         <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> There's no one left to roast</Text>
+        <View> 
+         <Text>Loading...</Text>
          </View>  
        )} 
          />

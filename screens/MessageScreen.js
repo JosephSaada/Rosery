@@ -21,8 +21,8 @@ const MessageScreen = () => {
         navigation.replace("ChatScreen")
       }  
 
-      console.log(getMatchedUserInfo(matchDetails.users, user).id + user) 
-      console.log(user + getMatchedUserInfo(matchDetails.users, user).id)
+      //console.log(getMatchedUserInfo(matchDetails.users, user).id + user) 
+      //console.log(user + getMatchedUserInfo(matchDetails.users, user).id)
 
       const unmatchUsers = async () => {  
         await deleteDoc(doc(db,"matches", getMatchedUserInfo(matchDetails.users, user).id + user))  
@@ -40,7 +40,7 @@ const MessageScreen = () => {
       />
      </TouchableOpacity>    
      
-     <Text style={{fontSize:30, color: "#f8f8ff", marginTop: 30,fontWeight: "bold"}}>{getMatchedUserInfo(matchDetails.users, user).name}</Text>   
+     <Text numberOfLines={1} style={{fontSize:30, color: "#f8f8ff", marginTop: 30,fontWeight: "bold"}}>{getMatchedUserInfo(matchDetails.users, user).name}</Text>   
 
      <TouchableOpacity onPress={unmatchUsers}>
        <Ionicons 

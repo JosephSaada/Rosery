@@ -1,14 +1,15 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
-import {View, Text, Button,TouchableOpacity, StyleSheet, Image, Platform, StatusBar} from 'react-native'; 
+import {View, Text, Button,TouchableOpacity, StyleSheet, Image, Platform, StatusBar, Modal} from 'react-native'; 
 import {useNavigation} from '@react-navigation/core' 
 import { auth } from '../firebase'
-import {Ionicons, AntDesign, Entypo} from "@expo/vector-icons"; 
+import {Ionicons} from "@expo/vector-icons"; 
 import Swiper from 'react-native-deck-swiper'; 
 import {BoxShadow} from 'react-native-shadow'
 import { onSnapshot, doc, collection, getDocs, setDoc, query, where, getDoc, serverTimestamp} from '@firebase/firestore'; 
 import {db} from "../firebase"; 
 import { async } from '@firebase/util';
 import generateId from '../lib/generateId'; 
+import Footer from '../components/Footer';
 
 const Homescreen = () => {  
     const navigation = useNavigation();  
@@ -17,9 +18,9 @@ const Homescreen = () => {
     'use strict';
     var React = require('react-native');
     var {Dimensions} = React; 
-    var width = Dimensions.get('window').width; 
+    var width = Dimensions.get('window').width;  
 
-    //const swiperef = useRef(null);  
+    //const swiperef = useRef(null);   
 
      useLayoutEffect(() =>  
       onSnapshot(doc(db, 'users', auth.currentUser.uid), snapshot => {  
@@ -53,14 +54,6 @@ const Homescreen = () => {
       fetchCards(); 
       return unsub;
     }, [db])
-
-    const handleChat = () => { 
-      navigation.replace("ChatScreen")
-    } 
-
-    const handleDisclaimer = () => { 
-      navigation.replace("Disclaimer")
-    }
 
     const shadowOpt = {
       width: width*0.93, // 485
@@ -98,7 +91,7 @@ const Homescreen = () => {
             }) ;
             navigation.navigate('Match', { 
               loggedInProfile, userSwiped,
-            })
+             })
           } else { 
             setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped)
           }
@@ -109,37 +102,10 @@ const Homescreen = () => {
   return (  
      <View style={styles.container}>   
 
-      <View style={{flexDirection:"row", justifyContent:'space-between'}} >
-      <TouchableOpacity onPress={handleDisclaimer}> 
-      <Image  
-      source={require('../assets/Gamo3.png')} 
-      style = {{
-        width: 75,
-        height: 75,  
-        marginTop: 25, 
-        marginLeft: 20,
-      }}  
-      />
-    </TouchableOpacity>   
-
-    <TouchableOpacity onPress={handleChat}> 
-      <Ionicons 
-      name = "chatbubble-sharp" size = {50} color = '#f8f8ff'
-      style = {{ 
-        marginTop: 40,  
-        marginRight: 30, 
-      }}
-     /> 
-    </TouchableOpacity>   
-
-    </View>
-     <Text style={{textAlign: 'center', color:'#f8f8ff', fontSize: 25}}>User: {(auth.currentUser?.email).split("@")[0]} </Text>
-
-     <View style = {{flex: 1, marginTop: -45}}> 
+     <View style = {{flex: 1, marginTop: 0}}> 
       <Swiper  
       //ref = {swiperef}
       containerStyle={{backgroundColor: "transparent"}}
-      //cards = {DUMMY_DATA}  
       cards = {profiles}  
       stackSize={5} 
       cardIndex={0}  
@@ -197,9 +163,11 @@ const Homescreen = () => {
   </View>  
 )}
       />
-      </View>    
+      </View>      
+    <Footer> </Footer> 
    </View>
-  )
+  ) 
+  
 }
 
 export default Homescreen 
@@ -218,11 +186,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',    
     alignSelf: 'center',    
     marginBottom: 25,
-  },
+  }, 
   buttonText: {
-    color: 'white',
+    color: '#f8f8ff',
     fontWeight: '700',
     fontSize: 16, 
     fontWeight: 'bold', 
-  },   
+  },  
+
 });

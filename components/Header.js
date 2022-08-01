@@ -4,7 +4,7 @@ import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from '@react-navigation/core'   
 import { auth } from '../firebase'
 
-const Header = ({title}) => { 
+const Header = () => { 
     const navigation = useNavigation();  
 
     const back = () => { 

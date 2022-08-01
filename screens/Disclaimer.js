@@ -1,23 +1,15 @@
 import React, { useState, useEffect }  from 'react' 
-import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar, ScrollView, Modal, Button, Image} from 'react-native'; 
+import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar, ScrollView, Button, Image} from 'react-native'; 
 import {useNavigation} from '@react-navigation/core' 
 import { auth } from '../firebase'  
 import {Ionicons} from "@expo/vector-icons";  
 import { onSnapshot, collection, query} from '@firebase/firestore'; 
 import {db} from "../firebase";  
-import Swiper from 'react-native-deck-swiper';
+import Footer from '../components/Footer';
+
 
 const Disclaimer = () => {   
-
-  'use strict';
-  var React = require('react-native');
-  var {Dimensions} = React; 
-  var width = Dimensions.get('window').width;  
-  var height = Dimensions.get('window').height;
-
   const navigation = useNavigation();  
-
-  const [modalVisible, setModalVisible] = useState(false);
 
   const back = () => { 
     navigation.replace("Homescreen")
@@ -65,68 +57,9 @@ const Disclaimer = () => {
       }} 
       />
      </TouchableOpacity>      
-     <TouchableOpacity  onPress={() => setModalVisible(true)}> 
-      <Ionicons 
-      name = "person-circle-outline" size = {50} color = '#f8f8ff'
-      style = {{ 
-        marginTop: 30,  
-        marginRight: 20, 
-      }}
-     />  
-    </TouchableOpacity>   
+    
      </View> 
-     <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}> 
-      <View style = {{flex: 1, marginTop: height/-14, marginRight: width}}> 
-      <Swiper  
-      containerStyle={{backgroundColor: "transparent"}} 
-      cards = {profiles}  
-      stackSize={1} 
-      cardIndex={0}  
-      verticalSwipe={false}   
-      horizontalSwipe={false}
-      renderCard={(card) => card ? (   
-        <View key = {card.id} style = {{borderTopLeftRadius: 20,
-        borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}> 
-          <Image style = {{height: '85%', width: width*.93, borderTopLeftRadius: 20,
-        borderTopRightRadius: 20}} source={{uri: card.photoURL}}/>     
-        <View style={{backgroundColor: '#28282B', padding: 15, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, height:100, textAlign: 'center', flexDirection:"row", justifyContent:'space-between',  width: width*.93 }}>
-            <View>
-              <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name}</Text> 
-              <Text style = {{ fontSize: 20, color: '#f8f8ff'}}>{card.job}</Text>
-            </View>  
-            <Text style={{fontSize: 40, fontWeight: 'bold', color: '#f8f8ff'}}>{card.age}</Text>
-        </View>  
-        </View>
-       ): 
-       ( 
-        <View> 
-         <Text>Loading...</Text>
-         </View>  
-       )} 
-         />
-        </View>
-
-
-            <TouchableOpacity
-            onPress={() => setModalVisible(!modalVisible)}
-            style={[styles.invbutton, styles.invbuttonOutline]}
-     >
-            <Text style={styles.invbuttonText}>Hide Profile</Text>
-     </TouchableOpacity> 
-          </View>
-        </View>
-      </Modal>
-
+     
     <Text style={{fontSize:40, color: "#f8f8ff", textAlign: "center", marginTop: -20, marginBottom: 10, fontWeight: "bold"}}> 
         Information
     </Text>
@@ -154,8 +87,10 @@ const Disclaimer = () => {
      >
        <Text style={styles.buttonOutlineText}>Sign out</Text>
      </TouchableOpacity> 
-    </ScrollView>  
-    </View>
+    </ScrollView>    
+
+    <Footer> </Footer>
+    </View> 
   )
 }
 
@@ -165,8 +100,7 @@ const styles = StyleSheet.create({
   container: { 
     flex: 1, 
     resizeMode: 'contain',
-    backgroundColor: '#231F20',   
-    alignItems: 'center',   
+    backgroundColor: '#231F20',      
   },  
    button: { 
     backgroundColor: '#28282B',

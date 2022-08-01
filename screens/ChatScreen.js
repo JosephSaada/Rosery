@@ -2,12 +2,14 @@ import React from 'react'
 import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar } from 'react-native'; 
 import Header from '../components/Header'; 
 import ChatList from '../components/ChatList';
+import Footer from '../components/Footer';
 
 const ChatScreen = () => { 
   return (  
     <View style={styles.container}> 
-     <Header title = 'Chat'> </Header> 
-     <ChatList />
+     <Header> </Header> 
+     <ChatList /> 
+     <Footer></Footer>
     </View>
   )
 }

@@ -1,4 +1,4 @@
-import { View, Text, Button, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Image, StatusBar, Platform } from 'react-native';
+import { View, Text, Button, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Image, StatusBar, Platform,  } from 'react-native';
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
@@ -45,7 +45,6 @@ const LoginScreen = () => {
   return (
     <View 
       style={styles.container} 
-      behavior="padding"
     > 
     <Image 
     source={require('../assets/Gamo3.png')}

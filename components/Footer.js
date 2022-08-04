@@ -72,7 +72,7 @@ const Footer = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}> 
-      <View style = {{flex: 1, marginTop: height/-10.5, marginRight: width}}> 
+      <View style = {{flex: 1, marginTop: height/-10.5, marginRight: width }} > 
       <Swiper  
       containerStyle={{backgroundColor: "transparent"}} 
       cards = {profiles2}  
@@ -113,11 +113,20 @@ const Footer = () => {
         </View>
       </Modal>  
       
+      <View
+  style={{
+    borderBottomColor: '#f8f8ff',
+    borderBottomWidth: 2, 
+    marginBottom: 15,
+  }} 
+
+/>
+
       <View style={{flexDirection:"row", justifyContent:'space-between'}} > 
 
       <TouchableOpacity  onPress={handleDisclaimer}> 
       <Ionicons 
-      name = "alert-circle-outline" size = {50} color = '#f8f8ff'
+      name = "settings-outline" size = {50} color = '#f8f8ff'
       style = {{ 
         marginLeft: 35,
       }}
@@ -131,7 +140,7 @@ const Footer = () => {
         width: 40,
         height: 40,   
         transform: [{ scale: 2 }],
-        marginBottom: 50, 
+        marginBottom: 30, 
       }}  
       />
     </TouchableOpacity>    
@@ -139,17 +148,18 @@ const Footer = () => {
     <TouchableOpacity  onPress={() => setModalVisible(true)}> 
       <Ionicons 
       name = "person-circle-outline" size = {50} color = '#f8f8ff'
-      style = {{ 
-       
+      style = {{  
+
       }}
      />  
     </TouchableOpacity>   
 
     <TouchableOpacity onPress={handleChat}> 
       <Ionicons 
-      name = "chatbubble-sharp" size = {50} color = '#f8f8ff'
+      name = "chatbubble-outline" size = {50} color = '#f8f8ff'
       style = {{  
-        marginRight: 30,  
+        marginRight: 35,   
+        marginLeft: -10,
       }}
      /> 
     </TouchableOpacity>   
@@ -162,7 +172,9 @@ export default Footer
 
 const styles = StyleSheet.create({
     container: { 
-      padding: 2,  
+      padding: 2,   
+      bottom: 0, 
+      //position: 'absolute'  
     },  
     invbutton: { 
         backgroundColor: 'transparent',

@@ -4,12 +4,15 @@ import Header from '../components/Header';
 import ChatList from '../components/ChatList';
 import Footer from '../components/Footer';
 
-const ChatScreen = () => { 
+const ChatScreen = () => {   
+
   return (  
     <View style={styles.container}> 
-     <Header> </Header> 
-     <ChatList /> 
-     <Footer></Footer>
+     <Header> </Header>  
+    
+     <ChatList />   
+    <Footer></Footer>    
+
     </View>
   )
 }

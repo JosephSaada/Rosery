@@ -92,7 +92,10 @@ const ModalScreen = () => {
 
   return (  
     <ScrollView>
-    <KeyboardAvoidingView style={styles.container}>  
+    <KeyboardAvoidingView 
+    style={styles.container}
+    keyboardVerticalOffset={10}
+    >   
       <Image   
       source={require('../Roasterino.png')} 
       style={{width: 500, height: 100, resizeMode: 'contain', backgroundColor: '#231F20', borderColor: '#28282B', borderWidth: 2}} 
@@ -109,7 +112,7 @@ const ModalScreen = () => {
           <Text style={styles.buttonText}>Pick an Image</Text>
         </TouchableOpacity>    
         {image && <Image source={{ uri: url}} />}  
-        </View> 
+        </View>  
 
         <Text style={styles.InputNames}>Full Name</Text>  
         <TextInput 

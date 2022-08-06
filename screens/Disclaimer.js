@@ -6,9 +6,12 @@ import {Ionicons} from "@expo/vector-icons";
 import { onSnapshot, collection, query} from '@firebase/firestore'; 
 import {db} from "../firebase";  
 import Footer from '../components/Footer';
+import { BannerAd, TestIds, BannerAdSize } from 'react-native-google-mobile-ads';  
 
+const Disclaimer = () => {     
 
-const Disclaimer = () => {   
+  const adUnitId = (Platform.OS === 'ios') ? 'ca-app-pub-8819301922359044/7610536058' : 'ca-app-pub-8819301922359044/6680597761'; 
+
   const navigation = useNavigation();  
 
   const back = () => { 
@@ -23,26 +26,6 @@ const Disclaimer = () => {
       })
       .catch(error => alert(error.message))
   } 
- 
-  const [profiles, setProfiles] = useState([]);   
-
-  useEffect(() => { 
-    let unsub; 
-    const fetchCards = async () => {  
-      unsub = onSnapshot(query(collection(db, 'users')), snapshot => {  
-        setProfiles(snapshot.docs
-          .filter((doc)=>doc.id === auth.currentUser.uid)
-          .map(doc => ({ 
-          id: doc.id, 
-          ...doc.data()
-        })))
-      })
-    } 
-    fetchCards(); 
-    return unsub;
-  }, [db])
-
-  console.log(profiles)
 
   return (      
     <View style={styles.container}>    
@@ -88,7 +71,16 @@ const Disclaimer = () => {
        <Text style={styles.buttonOutlineText}>Sign out</Text>
      </TouchableOpacity> 
     </ScrollView>    
-
+    <View style={{alignItems: 'center', justifyContent: 'center'}}>
+     <BannerAd 
+      unitId={TestIds.BANNER}  
+      size={BannerAdSize.FULL_BANNER}  
+      requestOptions={{ 
+        requestNonPersonalizedAdsOnly: true,
+      }} 
+      onAdFailedToLoad={error => console.log(error)}
+      /> 
+      </View>
     <Footer> </Footer>
     </View> 
   )

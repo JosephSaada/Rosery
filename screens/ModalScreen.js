@@ -44,7 +44,6 @@ const ModalScreen = () => {
   const incomplete = !image && !age && !name && !job  
 
   const updateProfile = () => {    
-    //console.log("user id: " + auth.currentUser.uid);
     setDoc(doc(db, 'users', auth.currentUser.uid), {   
       id: auth.currentUser.uid, 
       name: name, 
@@ -77,8 +76,6 @@ const ModalScreen = () => {
       aspect: [7, 11],
       quality: 1,
     });
-
-    console.log(result);
 
     if (!result.cancelled) { 
       const storage = getStorage();  

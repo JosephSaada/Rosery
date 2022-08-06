@@ -22,7 +22,8 @@ const Footer = () => {
     const [profiles2, setProfiles2] = useState([]);    
     
     const route = useRoute();
-        
+    
+    const currentScreen = route.name 
 
     const handleChat = () => { 
         if (route.name !== 'ChatScreen') { 
@@ -72,7 +73,7 @@ const Footer = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}> 
-      <View style = {{flex: 1, marginTop: height/-10.5, marginRight: width }} > 
+      <View style = {{flex: 1, marginTop: height/-14, marginRight: width }} > 
       <Swiper  
       containerStyle={{backgroundColor: "transparent"}} 
       cards = {profiles2}  
@@ -82,17 +83,17 @@ const Footer = () => {
       horizontalSwipe={false}
       renderCard={(card) => card ? (   
         <View key = {card.id} style = {{borderTopLeftRadius: 20,
-        borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}> 
-          <Image style = {{height: '85%', width: width*.93, borderTopLeftRadius: 20,
-        borderTopRightRadius: 20}} source={{uri: card.photoURL}}/>     
-        <View style={{backgroundColor: '#28282B', padding: 15, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, height:100, textAlign: 'center', flexDirection:"row", justifyContent:'space-between',  width: width*.93 }}>
-            <View>
-              <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name}</Text> 
-              <Text style = {{ fontSize: 20, color: '#f8f8ff'}}>{card.job}</Text>
-            </View>  
-            <Text style={{fontSize: 40, fontWeight: 'bold', color: '#f8f8ff'}}>{card.age}</Text>
-        </View>  
-        </View>
+          borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}> 
+            <Image style = {{height: '93%', width: width*.93, borderTopLeftRadius: 20,
+          borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}} source={{uri: card.photoURL}}/>     
+  
+          <View style={{backgroundColor: 'rgba(0,0,0,0.5)', marginTop: -100, padding: 15, height:100, width: width*.93, alignItems: 'center', alignContent: 'center', borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}>
+              <View>
+                <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name} {card.age}</Text> 
+                <Text style = {{ fontSize: 20, color: '#f8f8ff', alignSelf: 'center'}}>{card.job}</Text>
+              </View>  
+          </View> 
+          </View>
        ): 
        ( 
         <View> 
@@ -117,52 +118,95 @@ const Footer = () => {
   style={{
     borderBottomColor: '#f8f8ff',
     borderBottomWidth: 2, 
-    marginBottom: 15,
+    marginBottom: 20,
   }} 
 
 />
 
-      <View style={{flexDirection:"row", justifyContent:'space-between'}} > 
+      <View style={{flexDirection:"row", justifyContent:'space-between', marginBottom: 10}} > 
 
-      <TouchableOpacity  onPress={handleDisclaimer}> 
+
+{currentScreen === 'Disclaimer' ? 
+      <TouchableOpacity  onPress={handleDisclaimer} style={{marginLeft: 35,}}> 
+      <Ionicons 
+      name = "settings" size = {50} color = '#f8f8ff'
+      style = {{ 
+        
+      }}
+     />  
+     <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Info</Text>
+    </TouchableOpacity>    
+: 
+<TouchableOpacity  onPress={handleDisclaimer} style={{marginLeft: 35,}}> 
       <Ionicons 
       name = "settings-outline" size = {50} color = '#f8f8ff'
       style = {{ 
-        marginLeft: 35,
+        
       }}
      />  
-    </TouchableOpacity>   
-
-      <TouchableOpacity onPress={handleHome}> 
-      <Image  
-      source={require('../assets/Gamo3.png')} 
-      style = {{
-        width: 40,
-        height: 40,   
-        transform: [{ scale: 2 }],
-        marginBottom: 30, 
-      }}  
-      />
+     <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Info</Text>
     </TouchableOpacity>    
+}
+
+    {currentScreen === 'Homescreen'
+        ? <TouchableOpacity onPress={handleHome}>  
+        <Image  
+          source={require('../assets/transparentgamo.png')} 
+          style = {{
+            width: 49.5,
+            height: 52,   
+            marginBottom: 5, 
+          }}   
+          /> 
+          <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Home</Text>
+        </TouchableOpacity> 
+
+        : 
+        
+        <TouchableOpacity onPress={handleHome}>  
+        <Image  
+          source={require('../assets/Gamo4.png')} 
+          style = {{
+            width: 50,
+            height: 50,   
+            marginBottom: 5, 
+          }}   
+          /> 
+          <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Home</Text>
+        </TouchableOpacity>  
+      }
 
     <TouchableOpacity  onPress={() => setModalVisible(true)}> 
       <Ionicons 
       name = "person-circle-outline" size = {50} color = '#f8f8ff'
-      style = {{  
-
-      }}
-     />  
+      style = {{}}
+     />   
+     <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold'}} >Profile</Text>
     </TouchableOpacity>   
 
+{currentScreen === 'ChatScreen' ? 
     <TouchableOpacity onPress={handleChat}> 
       <Ionicons 
-      name = "chatbubble-outline" size = {50} color = '#f8f8ff'
+      name = "chatbubble" size = {50} color = '#f8f8ff'
       style = {{  
         marginRight: 35,   
         marginLeft: -10,
       }}
-     /> 
-    </TouchableOpacity>   
+     />  
+     <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold'}} >Chat</Text>
+    </TouchableOpacity>    
+: 
+  <TouchableOpacity onPress={handleChat}> 
+  <Ionicons 
+  name = "chatbubble-outline" size = {50} color = '#f8f8ff'
+  style = {{  
+    marginRight: 35,   
+    marginLeft: -10,
+  }}
+  />  
+  <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold'}} >Chat</Text>
+  </TouchableOpacity>   
+}
     </View>  
     </View> 
   )
@@ -173,11 +217,12 @@ export default Footer
 const styles = StyleSheet.create({
     container: { 
       padding: 2,   
-      bottom: 0, 
+      bottom: 0,  
+      backgroundColor: '#28282b'
       //position: 'absolute'  
     },  
     invbutton: { 
-        backgroundColor: 'transparent',
+        backgroundColor: '#28282b',
         width: '60%',
         padding: 15,
         borderRadius: 10,

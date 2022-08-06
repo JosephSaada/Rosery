@@ -112,11 +112,9 @@ const Homescreen = () => {
       animateCardOpacity 
       verticalSwipe={false}   
       onSwipedLeft={(cardIndex)=> { 
-        console.log('left'); 
         swipeLeft(cardIndex);
       }} 
       onSwipedRight={(cardIndex)=> { 
-        console.log('right'); 
         swipeRight(cardIndex);
       }} 
       overlayLabels={{ 
@@ -143,21 +141,19 @@ const Homescreen = () => {
       renderCard={(card) => card ? (   
         <View key = {card.id} style = {{borderTopLeftRadius: 20,
         borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}> 
-          <Image style = {{height: '85%', width: width*.93, borderTopLeftRadius: 20,
-        borderTopRightRadius: 20}} source={{uri: card.photoURL}}/>     
-<BoxShadow setting={shadowOpt}>
-        <View style={{backgroundColor: '#28282B', padding: 15, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, height:100, textAlign: 'center', flexDirection:"row", justifyContent:'space-between',  width: width*.93 }}>
+          <Image style = {{height: '93%', width: width*.93, borderTopLeftRadius: 20,
+        borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}} source={{uri: card.photoURL}}/>     
+
+        <View style={{backgroundColor: 'rgba(0,0,0,0.5)', marginTop: -100, padding: 15, height:100, width: width*.93, alignItems: 'center', alignContent: 'center', borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}>
             <View>
-              <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name}</Text> 
-              <Text style = {{ fontSize: 20, color: '#f8f8ff'}}>{card.job}</Text>
+              <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name} {card.age}</Text> 
+              <Text style = {{ fontSize: 20, color: '#f8f8ff', alignSelf: 'center'}}>{card.job}</Text>
             </View>  
-            <Text style={{fontSize: 40, fontWeight: 'bold', color: '#f8f8ff'}}>{card.age}</Text>
         </View> 
-</BoxShadow> 
         </View>
   ) : 
 ( 
- <View style = {{backgroundColor: "#28282B", height: '90%', borderTopLeftRadius: 20,
+ <View style = {{backgroundColor: "#28282B", height: '85%', borderTopLeftRadius: 20,
  borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignItems: 'center', justifyContent: 'center'}}> 
   <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> There's no one left to roast</Text>
   </View>  

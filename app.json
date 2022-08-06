@@ -30,6 +30,10 @@
     },
     "web": {
       "favicon": "./assets/icon3.png"
-    }
-  }
+    } 
+  }, 
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-8819301922359044~8562308035", 
+    "ios_app_id": "ca-app-pub-8819301922359044~8626435957"
+  } 
 }

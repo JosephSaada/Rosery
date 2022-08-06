@@ -41,8 +41,6 @@ const MessageScreen = () => {
       setInput("");
     }
 
-    //console.log(matchDetails.users[user].photoURL)
-
     const navigation = useNavigation();   
 
     const back = () => { 

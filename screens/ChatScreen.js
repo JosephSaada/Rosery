@@ -1,18 +1,29 @@
-import React from 'react' 
-import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar } from 'react-native'; 
+import React, { useEffect, useState } from 'react'
+import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar, SafeAreaView } from 'react-native'; 
 import Header from '../components/Header'; 
 import ChatList from '../components/ChatList';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'; 
+import { AppOpenAd, InterstitialAd, RewardedAd, BannerAd, TestIds, BannerAdSize } from 'react-native-google-mobile-ads'; 
+
 
 const ChatScreen = () => {   
+  const adUnitId = Platform.OS === 'ios' ? 'ca-app-pub-8819301922359044/7610536058' : 'ca-app-pub-8819301922359044/6680597761';
 
-  return (  
-    <View style={styles.container}> 
+  return (   
+    <View style={styles.container}>  
      <Header> </Header>  
-    
-     <ChatList />   
+     <ChatList />    
+     <View style={{alignItems: 'center', justifyContent: 'center'}}>
+     <BannerAd 
+      unitId={TestIds.BANNER}  
+      size={BannerAdSize.FULL_BANNER}  
+      requestOptions={{ 
+        requestNonPersonalizedAdsOnly: true,
+      }} 
+      onAdFailedToLoad={error => console.log(error)}
+      /> 
+      </View>
     <Footer></Footer>    
-
     </View>
   )
 }

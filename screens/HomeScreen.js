@@ -10,6 +10,7 @@ import {db} from "../firebase";
 import { async } from '@firebase/util';
 import generateId from '../lib/generateId'; 
 import Footer from '../components/Footer';
+import { getContentById } from '../lib/getContentById';
 
 const Homescreen = () => {  
     const navigation = useNavigation();  
@@ -29,8 +30,11 @@ const Homescreen = () => {
       }), []);  
 
 
+      
+
+
     useEffect(() => { 
-      let unsub; 
+      let unsub;       
 
       const fetchCards = async () => {  
         const passes = await getDocs(collection(db,'users',auth.currentUser.uid, 'passes')).then(
@@ -41,6 +45,15 @@ const Homescreen = () => {
         ) 
         const passedUserIds = passes.length > 0 ? passes : ['test']; 
         const swipedUserIds = swipes.length > 0 ? swipes : ['test'];
+
+        // unsub = onSnapshot(query(collection(db, 'users'), getContentById('id', [...passedUserIds, ...swipedUserIds])), snapshot => {  
+        //   setProfiles(snapshot.docs
+        //     .filter((doc)=>doc.id !== auth.currentUser.uid)
+        //     .map(doc => ({ 
+        //     id: doc.id, 
+        //     ...doc.data()
+        //   })))
+        // })
 
         unsub = onSnapshot(query(collection(db, 'users'), where('id', 'not-in', [...passedUserIds, ...swipedUserIds])), snapshot => {  
           setProfiles(snapshot.docs
@@ -118,21 +131,13 @@ const Homescreen = () => {
         swipeRight(cardIndex);
       }} 
       overlayLabels={{ 
-        left:{ 
-           title: "NAH", 
-           style: { 
-            label: { 
-              textAlign: "right", 
-              color: "black",
-            },
-           },
-        },  
         right: { 
           title: "ROAST", 
           style: { 
             label: { 
               textAlign: "left", 
-              color: "white",
+              color: "white", 
+              fontWeight: 'bold',
             }
           }
         }

@@ -99,18 +99,6 @@ const ModalScreen = () => {
      />  
       <Text style={{textAlign: 'center', color: '#28282B', fontWeight: 'bold', fontSize: 30}}>Hi {str} </Text> 
 
-      <Text style={styles.InputNames}> Picture</Text>  
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={pickImage}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Pick an Image</Text>
-        </TouchableOpacity>    
-        {image && <Image source={{ uri: url}} />}  
-        </View>  
-
         <Text style={styles.InputNames}>Full Name</Text>  
         <TextInput 
         value={name} 
@@ -142,7 +130,18 @@ const ModalScreen = () => {
           keyboardType='numeric'
           maxLength={3}
           style={styles.input} 
-        />  
+        />    
+        
+  <Text style={styles.InputNames}> Picture</Text>   
+    <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          onPress={pickImage}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Pick an Image</Text>
+        </TouchableOpacity>    
+        {image && <Image source={{ uri: url}} />}  
+        </View> 
 
  <View style={styles.buttonContainer2}>
         <TouchableOpacity 

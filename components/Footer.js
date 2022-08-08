@@ -83,7 +83,7 @@ const Footer = () => {
       horizontalSwipe={false}
       renderCard={(card) => card ? (   
         <View key = {card.id} style = {{borderTopLeftRadius: 20,
-          borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}> 
+          borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignSelf: 'center'}}> 
             <Image style = {{height: '93%', width: width*.93, borderTopLeftRadius: 20,
           borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}} source={{uri: card.photoURL}}/>     
   

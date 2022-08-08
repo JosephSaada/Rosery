@@ -4,7 +4,6 @@ import {useNavigation} from '@react-navigation/core'
 import { auth } from '../firebase'
 import {Ionicons} from "@expo/vector-icons"; 
 import Swiper from 'react-native-deck-swiper'; 
-import {BoxShadow} from 'react-native-shadow'
 import { onSnapshot, doc, collection, getDocs, setDoc, query, where, getDoc, serverTimestamp} from '@firebase/firestore'; 
 import {db} from "../firebase"; 
 import { async } from '@firebase/util';
@@ -67,17 +66,6 @@ const Homescreen = () => {
       fetchCards(); 
       return unsub;
     }, [db])
-
-    const shadowOpt = {
-      width: width*0.93, // 485
-      height: 100,
-      color:"#000",
-      border:2,
-      radius:30,
-      opacity:0.2,
-      x:1,
-      y:3, 
-    } 
 
     const swipeLeft = (cardIndex) => { 
       if (!profiles[cardIndex]) return; 
@@ -145,11 +133,11 @@ const Homescreen = () => {
       
       renderCard={(card) => card ? (   
         <View key = {card.id} style = {{borderTopLeftRadius: 20,
-        borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}> 
+        borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignSelf: 'center',}}> 
           <Image style = {{height: '93%', width: width*.93, borderTopLeftRadius: 20,
         borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}} source={{uri: card.photoURL}}/>     
 
-        <View style={{backgroundColor: 'rgba(0,0,0,0.5)', marginTop: -100, padding: 15, height:100, width: width*.93, alignItems: 'center', alignContent: 'center', borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}>
+        <View style={{backgroundColor: 'rgba(0,0,0,0.5)', marginTop: -100, padding: 15, height:100, width: width*.93, alignItems: 'center', alignContent: 'center', borderBottomLeftRadius: 20, borderBottomRightRadius: 20,}}>
             <View>
               <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name} {card.age}</Text> 
               <Text style = {{ fontSize: 20, color: '#f8f8ff', alignSelf: 'center'}}>{card.job}</Text>

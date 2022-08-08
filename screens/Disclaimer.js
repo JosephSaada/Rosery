@@ -1,10 +1,8 @@
-import React, { useState, useEffect }  from 'react' 
+import React from 'react' 
 import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar, ScrollView, Button, Image} from 'react-native'; 
 import {useNavigation} from '@react-navigation/core' 
 import { auth } from '../firebase'  
-import {Ionicons} from "@expo/vector-icons";  
-import { onSnapshot, collection, query} from '@firebase/firestore'; 
-import {db} from "../firebase";  
+import {Ionicons} from "@expo/vector-icons";   
 import Footer from '../components/Footer';
 import { BannerAd, TestIds, BannerAdSize } from 'react-native-google-mobile-ads';  
 

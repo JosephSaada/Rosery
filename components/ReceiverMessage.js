@@ -1,8 +1,10 @@
 import { View, Text, Image } from 'react-native'
-import React from 'react'
+import React from 'react' 
+import moment from "moment";
 
-const ReceiverMessage = ({message}) => {
-  return (
+const ReceiverMessage = ({message}) => {  
+
+  return ( 
     <View 
     style={{ 
         borderRadius: 10,
@@ -19,11 +21,19 @@ const ReceiverMessage = ({message}) => {
     }}
     > 
     <Image 
-       style={{height: 25, width: 25, borderTopLeftRadius: 50,
-        borderTopRightRadius: 50, borderBottomLeftRadius: 50, borderBottomRightRadius: 50, marginRight: 10}} 
+       style={{height: 35, width: 35, borderTopLeftRadius: 50,
+        borderTopRightRadius: 50, borderBottomLeftRadius: 50, borderBottomRightRadius: 50, marginRight: 10, }} 
       source={{uri: message.photoURL}}
-    />
-      <Text style ={{fontWeight: 'bold', fontSize: 16, color: 'white'}}>{message.message}</Text>
+    /> 
+    <View style={{flexDirection: 'column'}}>
+      <Text style ={{fontWeight: 'bold', fontSize: 16, color: 'white'}}>
+        {message.message}   
+      </Text>  
+
+      <Text style={{fontSize: 10, textAlign: 'right', color: 'white'}}>
+          {message.timestamp ? moment((message.timestamp).toDate()).format("LT") : "..."}
+        </Text> 
+      </View>
     </View>
   )
 }

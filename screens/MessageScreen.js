@@ -76,13 +76,12 @@ const MessageScreen = () => {
      </TouchableOpacity> 
         
     </View>  
-    <KeyboardAvoidingView
-    keyboardVerticalOffset={10} 
-    > 
+    
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}> 
     <>
     <FlatList 
-    data = {messages} 
+    data = {messages}  
+    inverted={-1}
     style={{backgroundColor: '#231F20'}} 
     keyExtractor={item => item.id} 
     renderItem={({item: message}) => 
@@ -95,10 +94,9 @@ const MessageScreen = () => {
     />
     </>
     </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    
 
-       <View style = {{flexDirection: 'row', justifyContent: "space-between", alignItems: 'center', backgroundColor: '#231F20'}}>  
-
+       <KeyboardAvoidingView style = {{flexDirection: 'row', justifyContent: "space-between", alignItems: 'center', backgroundColor: '#231F20'}}>  
         <TextInput
         style={{
         height: 50, width: '100%',  
@@ -122,7 +120,7 @@ const MessageScreen = () => {
         <TouchableOpacity onPress={sendMessage}>  
         <Text style={{fontWeight: 'bold', fontSize: 16, marginRight: 50, color: 'black', opacity: 0.5}}>Send</Text>
         </TouchableOpacity>
-       </View> 
+       </KeyboardAvoidingView> 
     </React.Fragment> 
     
   ) 

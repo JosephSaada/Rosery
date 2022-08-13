@@ -4,11 +4,9 @@ import { auth } from '../firebase'
 import { useState, useEffect } from 'react';
 import * as ImagePicker from 'expo-image-picker'; 
 import { useNavigation } from '@react-navigation/core'  
-import { NavigationContainer } from '@react-navigation/native';
 import { doc, serverTimestamp, setDoc} from '@firebase/firestore'; 
 import {db} from "../firebase";  
 import {getStorage, ref, uploadBytes, getDownloadURL} from 'firebase/storage'
-import { async } from '@firebase/util';
 
 const ModalScreen = () => {      
   const navigation = useNavigation() 
@@ -133,13 +131,15 @@ const ModalScreen = () => {
         />    
         
   <Text style={styles.InputNames}> Picture</Text>   
-    <View style={styles.buttonContainer}>
+    <View style={styles.buttonContainer}> 
+
         <TouchableOpacity
           onPress={pickImage}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Pick an Image</Text>
-        </TouchableOpacity>    
+        </TouchableOpacity>   
+
         {image && <Image source={{ uri: url}} />}  
         </View> 
 
@@ -151,7 +151,9 @@ const ModalScreen = () => {
         > 
           <Text style={styles.buttonText}>Update</Text>
         </TouchableOpacity>   
-        </View>
+        </View> 
+
+        <Text style={{marginTop: 10}}>If you're stuck here, close the app and reopen</Text>
     </KeyboardAvoidingView>  
     </ScrollView>
   ) 
@@ -217,7 +219,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',  
       borderColor: '#28282B',
       borderWidth: 2,
-    },
+    }, 
     buttonText: {
       color: 'white',
       fontWeight: '700',

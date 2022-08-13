@@ -63,7 +63,10 @@ const LoginScreen = () => {
           onChangeText={text => setPassword(text)} 
           style={styles.input} 
           secureTextEntry
-        /> 
+        />  
+        <Text style={{fontSize:10, color: "#f8f8ff", textAlign: "center", fontWeight: "bold", marginTop: 10}}> 
+        Don't reuse your bank password, I didn't spend a lot on security for this app. 
+    </Text>
         </View>  
       
       <View style={styles.buttonContainer}>

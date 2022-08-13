@@ -1,7 +1,9 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react' 
+import moment from "moment";
 
-const SenderMessage = ({message}) => {
+const SenderMessage = ({message}) => { 
+
   return (
     <View 
     style={{ 
@@ -19,7 +21,13 @@ const SenderMessage = ({message}) => {
         marginLeft: 'auto'
     }}
     >
-      <Text style ={{fontWeight: 'bold', fontSize: 16, color: 'black'}}>{message.message}</Text>
+      <Text style ={{fontWeight: 'bold', fontSize: 16, color: 'black', textAlign: 'right'}}>
+        {message.message}
+        </Text>  
+        
+        <Text style={{fontSize: 10, textAlign: 'right'}}>
+          {message.timestamp ? moment((message.timestamp).toDate()).format("LT") : "..."}
+        </Text>
     </View>
   )
 }

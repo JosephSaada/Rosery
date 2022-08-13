@@ -4868,7 +4868,7 @@ expo-crypto@~10.2.0:
 
 expo-dev-client@~1.0.1:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-1.0.1.tgz#88edb3a60b5a758c0cc57b0326bdcb1ad1573e5a"
+  resolved "https://registry.npmjs.org/expo-dev-client/-/expo-dev-client-1.0.1.tgz"
   integrity sha512-LMtMvappEyq0AvX3QXeq4CQ/dbdiBwUm6exjBz3dCM7KhMbjJ26TxbYvS0DfxAJDXBlyjCLi8O4HAUb0U811/Q==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
@@ -4880,7 +4880,7 @@ expo-dev-client@~1.0.1:
 
 expo-dev-launcher@1.0.1:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-1.0.1.tgz#cb550399a23d7e4fcc34cc7f5fef20cff979c7c8"
+  resolved "https://registry.npmjs.org/expo-dev-launcher/-/expo-dev-launcher-1.0.1.tgz"
   integrity sha512-1JFhiqjZE67qVAg0tOqVC53/7dIefWgaJ7OQRdapWEiiqUeFFnWmwvaz8NcjsTJzsk5bepXrgW7QpIZYkUYniQ==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
@@ -4890,12 +4890,12 @@ expo-dev-launcher@1.0.1:
 
 expo-dev-menu-interface@0.7.0:
   version "0.7.0"
-  resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.7.0.tgz#e141a671c7a34b921e7255653665d5e8489dab08"
+  resolved "https://registry.npmjs.org/expo-dev-menu-interface/-/expo-dev-menu-interface-0.7.0.tgz"
   integrity sha512-f/9gWLpuvXvQPeVBHH0T7qm4v2/Ynygs7dzebxqSWGDcCabfqRhuX+dv/t7CGu85m6waC9xYYnjLG7l8LC/i3Q==
 
 expo-dev-menu@1.0.1:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-1.0.1.tgz#7d64953d5304c794d47bfd5f3861a47c7eef9d03"
+  resolved "https://registry.npmjs.org/expo-dev-menu/-/expo-dev-menu-1.0.1.tgz"
   integrity sha512-npDfYQorhI/EaJb2LRLxI9WqzyIrM3AXhHnaA6qNBtEMb5IwAmg4I7//2FqbCtama+sUkc8mEFqyUa4/DbhJ2Q==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
@@ -8142,6 +8142,11 @@ modern-normalize@^1.1.0:
   resolved "https://registry.npmjs.org/modern-normalize/-/modern-normalize-1.1.0.tgz"
   integrity sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==
 
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
 morgan@^1.10.0, morgan@^1.8.2:
   version "1.10.0"
   resolved "https://registry.npmjs.org/morgan/-/morgan-1.10.0.tgz"
@@ -9407,7 +9412,7 @@ react-native-web@0.17.7:
     normalize-css-color "^1.0.2"
     prop-types "^15.6.0"
 
-react-native@0.68.2:
+react-native@^0.68.2:
   version "0.68.2"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.68.2.tgz"
   integrity sha512-qNMz+mdIirCEmlrhapAtAG+SWVx6MAiSfCbFNhfHqiqu1xw1OKXdzIrjaBEPihRC2pcORCoCHduHGQe/Pz9Yuw==

@@ -2,9 +2,18 @@ import { View, Text } from 'react-native'
 import React from 'react' 
 import moment from "moment";
 
-const SenderMessage = ({message}) => { 
+const SenderMessage = ({message}) => {   
+  return (  
+    <View>    
+      {message.timestamp ? 
+       <Text style={{fontSize: 10, textAlign: 'center', color: 'white'}}> 
+      {moment((message.timestamp).toDate()).format("LL") }  
+       </Text>   
+       
+       : 
+      <Text style ={{height: 0}}></Text>
+      }
 
-  return (
     <View 
     style={{ 
         
@@ -19,7 +28,9 @@ const SenderMessage = ({message}) => {
         backgroundColor: '#f8f8ff', 
         alignSelf: 'flex-start', 
         marginLeft: 'auto'
-    }}
+    }} 
+    //onTouchStart={changePressed} 
+    //onTouchEnd={changePressed}
     >
       <Text style ={{fontWeight: 'bold', fontSize: 16, color: 'black', textAlign: 'right'}}>
         {message.message}
@@ -27,7 +38,8 @@ const SenderMessage = ({message}) => {
         
         <Text style={{fontSize: 10, textAlign: 'right'}}>
           {message.timestamp ? moment((message.timestamp).toDate()).format("LT") : "..."}
-        </Text>
+        </Text> 
+    </View> 
     </View>
   )
 }

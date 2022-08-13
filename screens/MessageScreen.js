@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Button, Platform, FlatList, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, FlatList, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import {useNavigation} from '@react-navigation/core'   
 import {Ionicons} from "@expo/vector-icons";  
@@ -9,7 +9,8 @@ import { doc, deleteDoc, addDoc, collection, serverTimestamp, onSnapshot, orderB
 import { async } from '@firebase/util'; 
 import {db} from "../firebase"; 
 import SenderMessage from '../components/SenderMessage';
-import ReceiverMessage from '../components/ReceiverMessage';
+import ReceiverMessage from '../components/ReceiverMessage'; 
+import moment from "moment";
 
 const MessageScreen = () => {   
   const user = auth.currentUser.uid  
@@ -52,12 +53,12 @@ const MessageScreen = () => {
         await deleteDoc(doc(db,"matches", user + getMatchedUserInfo(matchDetails.users, user).id))    
         navigation.replace("ChatScreen") 
       }  
- 
+
     return (      
       <React.Fragment> 
     <View  
     style={styles.container}
-    keyboardVerticalOffset={10}
+    keyboardVerticalOffset={10} 
     > 
        <TouchableOpacity onPress={back} style={{alignSelf: 'flex-start'}} >
        <Ionicons 
@@ -78,18 +79,19 @@ const MessageScreen = () => {
     </View>  
     
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}> 
-    <>
-    <FlatList 
+    <>  
+    
+    <FlatList  
     data = {messages}  
     inverted={-1}
-    style={{backgroundColor: '#231F20'}} 
+    style={{backgroundColor: '#231F20', height: '80%'}} 
     keyExtractor={item => item.id} 
-    renderItem={({item: message}) => 
-        message.userId === user ? (
-          <SenderMessage key={message.id} message={message}/> 
-        ) : ( 
+    renderItem={({item: message}) =>   
+        message.userId === user ? (   
+          <SenderMessage key={message.id} message={message}/>   
+        ) : (   
           <ReceiverMessage key={message.id} message={message}/>
-        )
+        ) 
   }
     />
     </>
@@ -135,6 +137,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#231F20',  
       padding: 2,  
       flexDirection: "row", 
-      justifyContent:'space-between',   
+      justifyContent:'space-between',     
+      zIndex: 99,  
     },   
 })

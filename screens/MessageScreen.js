@@ -13,13 +13,19 @@ import ReceiverMessage from '../components/ReceiverMessage';
 import moment from "moment";
 
 const MessageScreen = () => {   
+const list = [];   
+   
+function addElement(message) { 
+  list.push(moment((message.timestamp).toDate()).format("ll")); 
+}
+
   const user = auth.currentUser.uid  
 
     const {params} = useRoute(); 
     const {matchDetails} = params; 
  
     const [input, setInput] = useState("") 
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState([]) 
 
     useEffect(()=> onSnapshot(query(collection(db, 'matches', matchDetails.id, 'messages'), orderBy('timestamp', 'desc')), 
       snapshot => setMessages(snapshot.docs.map(
@@ -88,9 +94,27 @@ const MessageScreen = () => {
     keyExtractor={item => item.id} 
     renderItem={({item: message}) =>   
         message.userId === user ? (   
+          <View>   
+            {
+            !list.includes(moment((message.timestamp).toDate()).format("ll")) ?    
+       <Text style={{fontSize: 10, textAlign: 'center', color: 'white'}}> 
+      {moment((message.timestamp).toDate()).format("ll")}      
+      {addElement(message)}
+       </Text>      
+       : 
+      <Text style ={{height: 0}}></Text>
+      }  
+
           <SenderMessage key={message.id} message={message}/>   
-        ) : (   
-          <ReceiverMessage key={message.id} message={message}/>
+
+          </View>
+        ) : (    
+          <View>  
+
+            
+          <ReceiverMessage key={message.id} message={message}/>  
+
+          </View>
         ) 
   }
     />

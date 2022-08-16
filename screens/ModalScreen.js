@@ -107,18 +107,8 @@ const ModalScreen = () => {
         maxLength={25}
       />   
 
-      <Text style={styles.InputNames}> Job or school or whatever</Text>  
 
-      <TextInput 
-          value={job} 
-          onChangeText={setjob}
-          placeholder ="enter the thing sucking your soul"  
-          placeholderTextColor="#f8f8ff"   
-          maxLength={30}
-          style={styles.input}
-        />   
-
-      <Text style={styles.InputNames}> Age</Text>  
+<Text style={styles.InputNames}> Age</Text>  
       
       <TextInput 
           value={age} 
@@ -129,6 +119,17 @@ const ModalScreen = () => {
           maxLength={3}
           style={styles.input} 
         />    
+
+      <Text style={styles.InputNames}> Bio</Text>  
+
+      <TextInput 
+          value={job} 
+          onChangeText={setjob}
+          placeholder ="enter the thing sucking your soul"  
+          placeholderTextColor="#f8f8ff"   
+          maxLength={30}
+          style={styles.input}
+        />   
         
   <Text style={styles.InputNames}> Picture</Text>   
     <View style={styles.buttonContainer}> 
@@ -149,7 +150,7 @@ const ModalScreen = () => {
         style={styles.button2}  
         onPress={updateProfile}  
         > 
-          <Text style={styles.buttonText}>Update</Text>
+          <Text style={styles.buttonText}>Save</Text>
         </TouchableOpacity>   
         </View> 
 

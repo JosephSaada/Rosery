@@ -1,10 +1,9 @@
 import { View, Text, Button, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Image, StatusBar, Platform,  } from 'react-native';
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 
-const LoginScreen = () => {  
-  //const { signIn } = useAuth(); 
+const LoginScreen = () => {   
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('') 
@@ -15,8 +14,8 @@ const LoginScreen = () => {
 
  useEffect(() => { 
     const unsubscribe = 
-    onAuthStateChanged(auth, (user) => { 
-      if (user) {    
+    onAuthStateChanged(auth, (user) => {  
+      if (user && user.emailVerified) {    
         navigation.replace("Homescreen") 
       } 
     })  
@@ -24,18 +23,24 @@ const LoginScreen = () => {
  }, []);
 
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
       createUserWithEmailAndPassword(auth, email, password)
       .then(userCredentials => {
-        const user = userCredentials.user;
-      })
-      .catch(error => alert(error.message))
+        const user = userCredentials.user;  
+        sendEmailVerification(user);
+        alert("Check your email to verify (check your spam as well) and then try to login in")
+      }) 
+      .catch(error => alert(error.message))  
   }
 
   const handleLogin = () => {
       signInWithEmailAndPassword(auth, email, password)
       .then(userCredentials => {
-        const user = userCredentials.user;
+        const user = userCredentials.user; 
+        if (!user.emailVerified) {    
+          sendEmailVerification(user); 
+          alert("Check your email to verify (check your spam as well) and then try to login in")
+        } 
       })
       .catch(error => alert(error.message))
   }

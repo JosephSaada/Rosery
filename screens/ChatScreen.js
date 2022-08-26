@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   container: { 
     flex: 1, 
     resizeMode: 'contain',
-    backgroundColor: '#231F20',  
+    backgroundColor: '#B5838D',  
   },  
    button: { 
     backgroundColor: '#28282B',

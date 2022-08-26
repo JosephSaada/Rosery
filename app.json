@@ -4,12 +4,12 @@
     "slug": "my-project",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon3.png",
+    "icon": "./assets/rosery2.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#231F20"
+      "backgroundColor": "#B5838D"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,13 +23,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon3.png",
-        "backgroundColor": "#231F20"
+        "foregroundImage": "./assets/rosery2.png",
+        "backgroundColor": "#B5838D"
       },
       "package": "com.roasterino.app"
     },
     "web": {
-      "favicon": "./assets/icon3.png"
+      "favicon": "./assets/rosery2.png"
     } 
   }, 
   "react-native-google-mobile-ads": {

@@ -1,5 +1,5 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
-import {View, Text, Button,TouchableOpacity, StyleSheet, Image, Platform, StatusBar, Modal} from 'react-native'; 
+import {View, Text, Button,TouchableOpacity, StyleSheet, Image, Platform, StatusBar, Modal, TextInput} from 'react-native'; 
 import {useNavigation} from '@react-navigation/core' 
 import { auth } from '../firebase'
 import Swiper from 'react-native-deck-swiper'; 
@@ -10,7 +10,9 @@ import Footer from '../components/Footer';
 
 const Homescreen = () => {  
     const navigation = useNavigation();  
-    const [profiles, setProfiles] = useState([]);   
+    const [profiles, setProfiles] = useState([]);    
+
+    const [compliment, setCompliment] = useState('')
 
     'use strict';
     var React = require('react-native');
@@ -108,44 +110,41 @@ const Homescreen = () => {
       }} 
       onSwipedRight={(cardIndex)=> { 
         swipeRight(cardIndex);
-      }} 
-      overlayLabels={{ 
-        right: { 
-          title: "ROAST", 
-          style: { 
-            label: { 
-              textAlign: "left", 
-              color: "white", 
-              fontWeight: 'bold',
-            }
-          }
-        }
-      }} 
-      
-      renderCard={(card) => card ? (   
+      }}  
+
+      renderCard={(card) => card ? (    
         <View key = {card.id} style = {{borderTopLeftRadius: 20,
         borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignSelf: 'center',}}> 
           <Image style = {{height: '93%', width: width*.93, borderTopLeftRadius: 20,
         borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}} source={{uri: card.photoURL}}/>     
 
-        <View style={{backgroundColor: 'rgba(0,0,0,0.5)', marginTop: -100, padding: 15, height:100, width: width*.93, alignItems: 'center', alignContent: 'center', borderBottomLeftRadius: 20, borderBottomRightRadius: 20,}}>
+<View style = {styles.inputContainer}> 
+      <TextInput
+        placeholder ="Compliment"  
+        value = {compliment} 
+        onChangeText={text => setCompliment(text)} 
+        style={styles.input}
+      />  
+      </View> 
+
+        <View style={{backgroundColor: 'rgba(109,104,117,0.7)', marginTop: -100, padding: 15, height:100, width: width*.93, alignItems: 'center', alignContent: 'center', borderBottomLeftRadius: 20, borderBottomRightRadius: 20,}}>
             <View>
-              <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name} {card.age}</Text> 
-              <Text style = {{ fontSize: 20, color: '#f8f8ff', alignSelf: 'center'}}>{card.job}</Text>
+              <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#F8F0E3'}}>{card.name} {card.age}</Text> 
+              <Text style = {{ fontSize: 20, color: '#F8F0E3', alignSelf: 'center'}}>{card.job}</Text>
             </View>  
         </View> 
         </View>
   ) : 
 ( 
- <View style = {{backgroundColor: "#28282B", height: '85%', borderTopLeftRadius: 20,
+ <View style = {{backgroundColor: "#E5989B", height: '85%', borderTopLeftRadius: 20,
  borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignItems: 'center', justifyContent: 'center'}}> 
-  <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> There's no one left to roast</Text>
+  <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> Try complimenting youself today</Text>
   </View>  
 )}
       />
       </View>      
     <Footer> </Footer> 
-   </View>
+   </View> 
   ) 
   
 }
@@ -156,22 +155,18 @@ const styles = StyleSheet.create({
   container: { 
     flex: 1, 
     resizeMode: 'contain',
-    backgroundColor: '#231F20',    
-  },  
-   button: { 
-    backgroundColor: '#28282B',
-    width: '60%',
-    padding: 15,
+    backgroundColor: '#B5838D',    
+  },   
+  inputContainer: {
+    width: '80%', 
+    alignSelf: 'center', 
+    position: 'absolute'
+  },
+  input: {
+    backgroundColor: '#F8F0E3',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     borderRadius: 10,
-    alignItems: 'center',    
-    alignSelf: 'center',    
-    marginBottom: 25,
-  }, 
-  buttonText: {
-    color: '#f8f8ff',
-    fontWeight: '700',
-    fontSize: 16, 
-    fontWeight: 'bold', 
-  },  
-
+    marginTop: 15,
+  },
 });

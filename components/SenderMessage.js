@@ -15,7 +15,7 @@ const SenderMessage = ({message}) => {
         marginLeft: 3,
         borderWidth: 2,  
         marginRight: 5,
-        backgroundColor: '#f8f8ff', 
+        backgroundColor: '#F8F0E3', 
         alignSelf: 'flex-start', 
         marginLeft: 'auto'
     }} 

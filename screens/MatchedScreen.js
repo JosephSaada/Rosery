@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
       opacity: 0.8,
       justifyContent: 'center',
       alignItems: 'center', 
-      backgroundColor: '#231F20',
+      backgroundColor: '#B5838D',
     },  
 })

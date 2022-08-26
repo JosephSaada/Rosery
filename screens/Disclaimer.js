@@ -45,11 +45,10 @@ const Disclaimer = () => {
         Information
     </Text>
     <Text style={{fontSize:20, color: "#f8f8ff", textAlign: "center", marginBottom: -45}}>
-        Privacy Policy: I am not responsible or liable for anything LMAO {'\n \n'} 
+        Privacy Policy: Be nice and have fun! {'\n \n'} 
         Terms and Condtions: uhhh same thing as above {'\n \n'} 
         <Text style={{fontWeight: "bold",fontSize: 40 }}> Credits:</Text> {'\n \n'} 
-        <Text style={{fontWeight: "bold"}}> Devolper:</Text>{'\n \n'}  Joseph Saada {'\n \n'} 
-        <Text style={{fontWeight: "bold"}}> Branding Design:</Text> {'\n \n'} Ian Blevins {'\n \n'}   
+        <Text style={{fontWeight: "bold"}}> Devolper:</Text>{'\n \n'}  Joseph Saada {'\n \n'}  
         <Text style={{fontWeight: "bold"}}> Assistant Director:</Text> {'\n \n'} God {'\n \n'}   
         <Text style={{fontWeight: "bold"}}> Assistant to Assistant Director:</Text> {'\n \n'} Jesus Christ {'\n \n'}  
         
@@ -90,10 +89,10 @@ const styles = StyleSheet.create({
   container: { 
     flex: 1, 
     resizeMode: 'contain',
-    backgroundColor: '#231F20',      
+    backgroundColor: '#B5838D',      
   },  
    button: { 
-    backgroundColor: '#28282B',
+    backgroundColor: '#E5989B',
     width: '60%',
     padding: 15,
     borderRadius: 10,
@@ -101,27 +100,6 @@ const styles = StyleSheet.create({
     marginTop: 20,   
     alignSelf: 'center',    
   }, 
-  invbutton: { 
-    backgroundColor: 'transparent',
-    width: '60%',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center', 
-    marginTop: 20,   
-    alignSelf: 'center',    
-  },  
-  invbuttonOutline: { 
-    color: 'white',
-    marginTop: 7,
-    borderColor: 'white',
-    borderWidth: 2,
-  }, 
-  invbuttonText: {
-    color: 'white',
-    fontWeight: '700',
-    fontSize: 16, 
-    fontWeight: 'bold', 
-  },  
   buttonText: {
     color: '#f8f8ff',
     fontWeight: '700',
@@ -129,13 +107,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', 
   },  
   buttonOutline: {
-    backgroundColor: 'white',
+    backgroundColor: '#F8F0E3',
     marginTop: 7,
-    borderColor: '#28282B',
+    borderColor: '#E5989B',
     borderWidth: 2,
   },
   buttonOutlineText: {
-    color: '#28282B',
+    color: '#B5838D',
     fontWeight: '700',
     fontSize: 16, 
     fontWeight: 'bold',
@@ -145,20 +123,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22
-  },
-  modalView: {
-    margin: 20,
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
   },
   buttonOpen: {
     backgroundColor: "#F194FF",
@@ -171,8 +135,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center"
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
-  }
 })

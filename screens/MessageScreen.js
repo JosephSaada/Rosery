@@ -90,7 +90,7 @@ function addElement(message) {
     <FlatList  
     data = {messages}  
     inverted={-1}
-    style={{backgroundColor: '#231F20', height: '80%'}} 
+    style={{backgroundColor: '#B5838D', height: '80%'}} 
     keyExtractor={item => item.id} 
     renderItem={({item: message}) =>   
         message.userId === user ? (   
@@ -122,7 +122,7 @@ function addElement(message) {
     </TouchableWithoutFeedback>
     
 
-       <KeyboardAvoidingView style = {{flexDirection: 'row', justifyContent: "space-between", alignItems: 'center', backgroundColor: '#231F20'}}>  
+       <KeyboardAvoidingView style = {{flexDirection: 'row', justifyContent: "space-between", alignItems: 'center', backgroundColor: '#B5838D'}}>  
         <TextInput
         style={{
         height: 50, width: '100%',  
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     container: { 
       flex: 1, 
       resizeMode: 'contain',
-      backgroundColor: '#231F20',  
+      backgroundColor: '#B5838D',  
       padding: 2,  
       flexDirection: "row", 
       justifyContent:'space-between',     

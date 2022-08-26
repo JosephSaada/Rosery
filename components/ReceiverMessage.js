@@ -15,7 +15,7 @@ const ReceiverMessage = ({message}) => {
         marginLeft: 3,
         borderWidth: 2,  
         marginRight: -50,
-        backgroundColor: 'black', 
+        backgroundColor: '#E5989B', 
         alignSelf: 'flex-start',  
         flexDirection: 'row',
     }}

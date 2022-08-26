@@ -89,8 +89,8 @@ const Footer = () => {
   
           <View style={{backgroundColor: 'rgba(0,0,0,0.5)', marginTop: -100, padding: 15, height:100, width: width*.93, alignItems: 'center', alignContent: 'center', borderBottomLeftRadius: 20, borderBottomRightRadius: 20}}>
               <View>
-                <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#f8f8ff'}}>{card.name} {card.age}</Text> 
-                <Text style = {{ fontSize: 20, color: '#f8f8ff', alignSelf: 'center'}}>{card.job}</Text>
+                <Text style = {{ fontSize: 32, fontWeight: 'bold', color: '#F8F0E3'}}>{card.name} {card.age}</Text> 
+                <Text style = {{ fontSize: 20, color: '#F8F0E3', alignSelf: 'center'}}>{card.job}</Text>
               </View>  
           </View> 
           </View>
@@ -116,7 +116,7 @@ const Footer = () => {
       
       <View
   style={{
-    borderBottomColor: '#f8f8ff',
+    borderBottomColor: '#F8F0E3',
     borderBottomWidth: 2, 
     marginBottom: 20,
   }} 
@@ -129,82 +129,82 @@ const Footer = () => {
 {currentScreen === 'Disclaimer' ? 
       <TouchableOpacity  onPress={handleDisclaimer} style={{marginLeft: 35,}}> 
       <Ionicons 
-      name = "settings" size = {50} color = '#f8f8ff'
+      name = "settings" size = {50} color = '#eb8165'
       style = {{ 
         
       }}
      />  
-     <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Info</Text>
+     <Text style={{color:'#F8F0E3', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Info</Text>
     </TouchableOpacity>    
 : 
 <TouchableOpacity  onPress={handleDisclaimer} style={{marginLeft: 35,}}> 
       <Ionicons 
-      name = "settings-outline" size = {50} color = '#f8f8ff'
+      name = "settings-outline" size = {50} color = '#eb8165'
       style = {{ 
         
       }}
      />  
-     <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Info</Text>
+     <Text style={{color:'#F8F0E3', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Info</Text>
     </TouchableOpacity>    
 }
 
     {currentScreen === 'Homescreen'
         ? <TouchableOpacity onPress={handleHome}>  
         <Image  
-          source={require('../assets/transparentgamo.png')} 
+          source={require('../assets/rosery2.png')} 
           style = {{
             width: 49.5,
             height: 52,   
             marginBottom: 5, 
           }}   
           /> 
-          <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Home</Text>
+          <Text style={{color:'#F8F0E3', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Home</Text>
         </TouchableOpacity> 
 
         : 
         
         <TouchableOpacity onPress={handleHome}>  
         <Image  
-          source={require('../assets/Gamo4.png')} 
+          source={require('../assets/rosery3.png')} 
           style = {{
             width: 50,
             height: 50,   
             marginBottom: 5, 
           }}   
           /> 
-          <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Home</Text>
+          <Text style={{color:'#F8F0E3', fontSize: 16, fontWeight: 'bold', alignSelf: 'center'}} >Home</Text>
         </TouchableOpacity>  
       }
 
     <TouchableOpacity  onPress={() => setModalVisible(true)}> 
       <Ionicons 
-      name = "person-circle-outline" size = {50} color = '#f8f8ff'
+      name = "person-circle-outline" size = {50} color = '#eb8165'
       style = {{}}
      />   
-     <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold'}} >Profile</Text>
+     <Text style={{color:'#F8F0E3', fontSize: 16, fontWeight: 'bold'}} >Profile</Text>
     </TouchableOpacity>   
 
 {currentScreen === 'ChatScreen' ? 
     <TouchableOpacity onPress={handleChat}> 
       <Ionicons 
-      name = "chatbubble" size = {50} color = '#f8f8ff'
+      name = "chatbubble" size = {50} color = '#eb8165'
       style = {{  
         marginRight: 35,   
         marginLeft: -10,
       }}
      />  
-     <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold'}} >Chat</Text>
+     <Text style={{color:'#F8F0E3', fontSize: 16, fontWeight: 'bold'}} >Chat</Text>
     </TouchableOpacity>    
 : 
   <TouchableOpacity onPress={handleChat}> 
   <Ionicons 
-  name = "chatbubble-outline" size = {50} color = '#f8f8ff'
+  name = "chatbubble-outline" size = {50} color = '#eb8165'
   style = {{  
     marginRight: 35,   
     marginLeft: -10,
   }}
   />  
-  <Text style={{color:'#f8f8ff', fontSize: 16, fontWeight: 'bold'}} >Chat</Text>
+  <Text style={{color:'#F8F0E3', fontSize: 16, fontWeight: 'bold'}} >Chat</Text>
   </TouchableOpacity>   
 }
     </View>  
@@ -218,11 +218,11 @@ const styles = StyleSheet.create({
     container: { 
       padding: 2,   
       bottom: 0,  
-      backgroundColor: '#28282b'
+      backgroundColor: '#6D6875'
       //position: 'absolute'  
     },  
     invbutton: { 
-        backgroundColor: '#28282b',
+        backgroundColor: '#6D6875',
         width: '60%',
         padding: 15,
         borderRadius: 10,
@@ -231,13 +231,13 @@ const styles = StyleSheet.create({
         marginBottom: 25,    
       },  
       invbuttonOutline: { 
-        color: 'white',
+        color: '#F8F0E3',
         marginTop: 7,
-        borderColor: 'white',
+        borderColor: '#F8F0E3',
         borderWidth: 2,
       }, 
       invbuttonText: {
-        color: 'white',
+        color: '#F8F0E3',
         fontWeight: '700',
         fontSize: 16, 
         fontWeight: 'bold', 
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
       },  
       buttonOutline: {
-        backgroundColor: 'white',
+        backgroundColor: '#F8F0E3',
         marginTop: 7,
         borderColor: '#28282B',
         borderWidth: 2,
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#2196F3",
       },
       textStyle: {
-        color: "white",
+        color: "#F8F0E3",
         fontWeight: "bold",
         textAlign: "center"
       },

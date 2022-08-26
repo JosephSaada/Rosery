@@ -91,54 +91,52 @@ const ModalScreen = () => {
     style={styles.container}
     keyboardVerticalOffset={10}
     >   
-      <Image   
-      source={require('../Roasterino.png')} 
-      style={{width: 500, height: 100, resizeMode: 'contain', backgroundColor: '#231F20', borderColor: '#28282B', borderWidth: 2}} 
-     />  
-      <Text style={{textAlign: 'center', color: '#28282B', fontWeight: 'bold', fontSize: 30}}>Hi {str} </Text> 
+ 
+      <Text style={{textAlign: 'center', color: 'black', fontWeight: 'bold', fontSize: 40}}>Hi {str} </Text> 
+      
 
-        <Text style={styles.InputNames}>Full Name</Text>  
+        <Text style={styles.InputNames}>Name or thing to show off</Text>  
         <TextInput 
         value={name} 
         onChangeText={setname}
-        placeholder ="enter your parent's first mistake"  
+        placeholder ="something cool"  
         placeholderTextColor="#f8f8ff"  
         style={styles.input}
         maxLength={25}
       />   
 
 
-<Text style={styles.InputNames}> Age</Text>  
+<Text style={styles.InputNames}>Age</Text>  
       
       <TextInput 
           value={age} 
           onChangeText={setage}
-          placeholder ="enter how long you have been suffering for"  
+          placeholder ="any age is the age to do something beautiful"  
           placeholderTextColor="#f8f8ff"    
           keyboardType='numeric'
           maxLength={3}
           style={styles.input} 
         />    
 
-      <Text style={styles.InputNames}> Bio</Text>  
+      <Text style={styles.InputNames}>Decribe something about you</Text>  
 
       <TextInput 
           value={job} 
           onChangeText={setjob}
-          placeholder ="enter the thing sucking your soul"  
+          placeholder ="or about something you made"  
           placeholderTextColor="#f8f8ff"   
           maxLength={30}
           style={styles.input}
         />   
         
-  <Text style={styles.InputNames}> Picture</Text>   
+  <Text style={styles.InputNames}> You/something you're proud of</Text>   
     <View style={styles.buttonContainer}> 
 
         <TouchableOpacity
           onPress={pickImage}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Pick an Image</Text>
+          <Text style={styles.buttonText}>Pick an image</Text>
         </TouchableOpacity>   
 
         {image && <Image source={{ uri: url}} />}  
@@ -168,7 +166,7 @@ const styles = StyleSheet.create({
       padding: 1, 
       marginTop: 50, 
       flex: 1, 
-      resizeMode: 'contain',    
+      resizeMode: 'contain',     
     },   
     InputNames: {  
       marginTop: 10,
@@ -182,7 +180,7 @@ const styles = StyleSheet.create({
     }, 
     input: { 
       color: '#f8f8ff',
-      backgroundColor: '#231F20',
+      backgroundColor: '#B5838D',
       paddingHorizontal: 15,
       paddingVertical: 10,
       borderRadius: 10,
@@ -204,7 +202,7 @@ const styles = StyleSheet.create({
       marginTop: 35,
     },
     button: {
-      backgroundColor: '#231F20',
+      backgroundColor: '#B5838D',
       width: '100%',
       padding: 12,
       borderRadius: 10,
@@ -213,7 +211,7 @@ const styles = StyleSheet.create({
       borderWidth: 2,
     }, 
     button2: {
-      backgroundColor: '#231F20',
+      backgroundColor: '#B5838D',
       width: '100%',
       padding: 15,
       borderRadius: 10,

@@ -40,7 +40,9 @@ const LoginScreen = () => {
         if (!user.emailVerified) {    
           sendEmailVerification(user); 
           alert("Check your email to verify (check your spam as well) and then try to login in")
-        } 
+        } else { 
+          navigation.replace("Homescreen") 
+        }
       })
       .catch(error => alert(error.message))
   }
@@ -48,10 +50,11 @@ const LoginScreen = () => {
   return (
     <View 
       style={styles.container} 
-    > 
+    >  
+
     <Image 
-    source={require('../assets/Gamo3.png')}
-    style={{ width: 100, height: 100, resizeMode: 'contain', marginBottom: -10}} 
+    source={require('../assets/rosery2.png')}
+    style={{ width: 300, height: 300, resizeMode: 'contain', marginBottom: -200}} 
     /> 
 
       <View 
@@ -89,9 +92,10 @@ const LoginScreen = () => {
           <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity> 
 
-        <Text style={{fontSize:20, color: "#f8f8ff", textAlign: "center", fontWeight: "bold", marginTop: 10}}> 
-        Where nothing is at steak
-    </Text>
+        { <Text style={{fontSize:20, color: "#f8f8ff", textAlign: "center", fontWeight: "bold", marginTop: 10}}> 
+        Make someone's day today
+    </Text> } 
+
       </View>
     </View>
   )
@@ -104,36 +108,36 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center', 
-    backgroundColor: '#231F20', 
+    backgroundColor: '#B5838D', 
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   }, 
   inputContainer: {
-    width: '80%'
+    width: '80%' 
   },
   input: {
-    backgroundColor: 'white',
+    backgroundColor: '#F8F0E3',
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
   },
   buttonContainer: {
-    width: '60%',
+    width: '80%',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 25,
   },
   button: {
-    backgroundColor: '#28282B',
+    backgroundColor: '#E5989B',
     width: '100%',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
   },
   buttonOutline: {
-    backgroundColor: 'white',
+    backgroundColor: '#F8F0E3',
     marginTop: 7,
-    borderColor: '#28282B',
+    borderColor: '#E5989B',
     borderWidth: 2,
   },
   buttonText: {
@@ -143,7 +147,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttonOutlineText: {
-    color: '#28282B',
+    color: '#B5838D',
     fontWeight: '700',
     fontSize: 16, 
     fontWeight: 'bold',

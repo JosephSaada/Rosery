@@ -3,7 +3,7 @@ import {View, Text, Button,TouchableOpacity, StyleSheet, Image, Platform, Status
 import {useNavigation} from '@react-navigation/core' 
 import { auth } from '../firebase'
 import Swiper from 'react-native-deck-swiper'; 
-import { onSnapshot, doc, collection, getDocs, setDoc, query, where, getDoc, serverTimestamp} from '@firebase/firestore'; 
+import { onSnapshot, doc, collection, getDocs, setDoc, query, getDoc, serverTimestamp, addDoc} from '@firebase/firestore'; 
 import {db} from "../firebase"; 
 import generateId from '../lib/generateId'; 
 import Footer from '../components/Footer';
@@ -12,7 +12,7 @@ const Homescreen = () => {
     const navigation = useNavigation();  
     const [profiles, setProfiles] = useState([]);    
 
-    const [compliment, setCompliment] = useState('')
+    const [compliment, setCompliment] = useState('') 
 
     'use strict';
     var React = require('react-native');
@@ -87,7 +87,7 @@ const Homescreen = () => {
               loggedInProfile, userSwiped,
              })
           } else { 
-            setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped)
+            setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped) 
           }
         }
       )
@@ -95,8 +95,7 @@ const Homescreen = () => {
 
   return (  
      <View style={styles.container}>   
-
-     <View style = {{flex: 1, marginTop: 0}}> 
+     <View style = {{flex: 1, marginTop: 0}}>  
       <Swiper  
       //ref = {swiperef}
       containerStyle={{backgroundColor: "transparent"}}
@@ -106,26 +105,22 @@ const Homescreen = () => {
       animateCardOpacity 
       verticalSwipe={false}   
       onSwipedLeft={(cardIndex)=> { 
-        swipeLeft(cardIndex);
+        swipeLeft(cardIndex); 
+        setCompliment('');
       }} 
       onSwipedRight={(cardIndex)=> { 
-        swipeRight(cardIndex);
+        swipeRight(cardIndex);   
+        if (compliment != ''){ 
+          setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped) 
+        }
+        setCompliment('');  
       }}  
-
+      
       renderCard={(card) => card ? (    
         <View key = {card.id} style = {{borderTopLeftRadius: 20,
         borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignSelf: 'center',}}> 
           <Image style = {{height: '93%', width: width*.93, borderTopLeftRadius: 20,
         borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}} source={{uri: card.photoURL}}/>     
-
-<View style = {styles.inputContainer}> 
-      <TextInput
-        placeholder ="Compliment"  
-        value = {compliment} 
-        onChangeText={text => setCompliment(text)} 
-        style={styles.input}
-      />  
-      </View> 
 
         <View style={{backgroundColor: 'rgba(109,104,117,0.7)', marginTop: -100, padding: 15, height:100, width: width*.93, alignItems: 'center', alignContent: 'center', borderBottomLeftRadius: 20, borderBottomRightRadius: 20,}}>
             <View>
@@ -142,7 +137,15 @@ const Homescreen = () => {
   </View>  
 )}
       />
-      </View>      
+      </View>     
+      <View style = {styles.inputContainer}>  
+      <TextInput 
+        placeholder ="Compliment"  
+        value={compliment}
+        onChangeText={text => setCompliment(text)} 
+        style={styles.input} 
+      />    
+      </View>   
     <Footer> </Footer> 
    </View> 
   ) 
@@ -155,12 +158,13 @@ const styles = StyleSheet.create({
   container: { 
     flex: 1, 
     resizeMode: 'contain',
-    backgroundColor: '#B5838D',    
+    backgroundColor: '#B5838D',     
   },   
   inputContainer: {
     width: '80%', 
-    alignSelf: 'center', 
-    position: 'absolute'
+    alignSelf: 'center',  
+    position: 'absolute', 
+    marginTop: 50,
   },
   input: {
     backgroundColor: '#F8F0E3',

@@ -107,11 +107,12 @@ const Homescreen = () => {
       onSwipedLeft={(cardIndex)=> { 
         swipeLeft(cardIndex); 
         setCompliment('');
-      }} 
+      }}  
       onSwipedRight={(cardIndex)=> { 
         swipeRight(cardIndex);   
-        if (compliment != ''){ 
-          setDoc(doc(db, 'users', auth.currentUser.uid, 'swipes', userSwiped.id), userSwiped) 
+        if (compliment != ''){  
+          const userSwiped = profiles[cardIndex]; 
+          setDoc(doc(db, 'users', auth.currentUser.uid, 'Compliments', userSwiped.id), compliment) 
         }
         setCompliment('');  
       }}  
@@ -143,7 +144,8 @@ const Homescreen = () => {
         placeholder ="Compliment"  
         value={compliment}
         onChangeText={text => setCompliment(text)} 
-        style={styles.input} 
+        style={styles.input}  
+        maxLength={75}
       />    
       </View>   
     <Footer> </Footer> 

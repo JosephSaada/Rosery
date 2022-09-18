@@ -6,7 +6,6 @@ import getMatchedUserInfo from '../lib/getMatchedUserInfo'
 import { auth } from '../firebase';
 import { useRoute } from '@react-navigation/core';  
 import { doc, deleteDoc, addDoc, collection, serverTimestamp, onSnapshot, orderBy, query } from "firebase/firestore";
-import { async } from '@firebase/util'; 
 import {db} from "../firebase"; 
 import SenderMessage from '../components/SenderMessage';
 import ReceiverMessage from '../components/ReceiverMessage'; 
@@ -79,7 +78,7 @@ function addElement(message) {
      <TouchableOpacity onPress={unmatchUsers} style ={{height: 80}}>
        <Ionicons 
       name = "person-remove-outline" 
-      size = {40} color = '#f8f8ff' style = {{marginRight: 20,  marginTop: 30,}} />
+      size = {40} color = '#f8f8ff' style = {{marginRight: 20,  marginTop: 30}} />
      </TouchableOpacity> 
         
     </View>  
@@ -110,7 +109,6 @@ function addElement(message) {
           </View>
         ) : (    
           <View>  
-
             
           <ReceiverMessage key={message.id} message={message}/>  
 

@@ -2,14 +2,14 @@ import {View, Text, TouchableOpacity, StyleSheet, Image, Modal } from 'react-nat
 import React, {useEffect, useState} from 'react';
 import { useNavigation } from '@react-navigation/native' 
 import {Ionicons} from "@expo/vector-icons";  
-import { onSnapshot, collection, query} from '@firebase/firestore'; 
+import { onSnapshot, collection, query, limit} from '@firebase/firestore'; 
 import {db} from "../firebase";  
 import Swiper from 'react-native-deck-swiper'; 
 import { auth } from '../firebase' 
 import {useRoute} from '@react-navigation/native';
 
 const Footer = () => { 
-    const navigation = useNavigation();    
+    const navigation = useNavigation();     
 
     const [modalVisible, setModalVisible] = useState(false);  
 
@@ -19,7 +19,9 @@ const Footer = () => {
     var width = Dimensions.get('window').width;  
     var height = Dimensions.get('window').height;  
 
-    const [profiles2, setProfiles2] = useState([]);    
+    const [profiles2, setProfiles2] = useState([]);     
+
+    const [ratingProfiles, setRatingProfiles] = useState([]);
     
     const route = useRoute();
     
@@ -58,7 +60,64 @@ const Footer = () => {
       } 
       fetchCards(); 
       return unsub;
+    }, [db])  
+
+    useEffect(() => { 
+      let unsub;       
+
+      const fetchRatings = async () => {  
+        // const rating = await getDocs(collection(db,'users',auth.currentUser.uid, 'passes')).then(
+        //   snapshot=> snapshot.docs.map((doc) => doc.id)
+        // ) 
+       
+        // const ratingUserIds = rating.length > 0 ? rating : ['test'];
+
+        unsub = onSnapshot(query(collection(db, 'users', auth.currentUser.uid, 'ratings')), limit(10), snapshot => {  
+          setRatingProfiles(snapshot.docs    
+            .map(doc => ({ 
+            id: doc.id, 
+            ...doc.data()
+          })))
+        })
+      } 
+
+      fetchRatings(); 
+      return unsub;
     }, [db]) 
+
+    //console.log(ratingProfiles)  
+
+    console.log(Object.assign(ratingProfiles))
+
+    for (const [object] in Object.assign(ratingProfiles)){
+      console.log(object)
+    }
+
+    const [one, two, three, four, five, six, seven, eight, nine, ten] = Object.assign(ratingProfiles);  
+
+    //console.log(one.rating)  
+    //console.log(two.rating)
+
+    const average = 10;  
+
+const getAverage = () => {
+    const ratingProfiles2 = {...ratingProfiles} 
+    const [y, z] = Object.entries(ratingProfiles2).flat();  
+
+    const sum = 0; 
+    const count = 0;
+
+    for (const [key, value] of Object.entries(z)) {
+      console.log(`${value}`);  
+
+      //sum = sum + parseInt(value) 
+      //count += 1
+     } 
+
+    //average = sum/count 
+  } 
+
+ // getAverage();
 
   return (
     <View style={styles.container}>  
@@ -72,8 +131,11 @@ const Footer = () => {
         }}
       >
         <View style={styles.centeredView}>
-          <View style={styles.modalView}> 
-      <View style = {{flex: 1, marginTop: height/-14, marginRight: width }} > 
+          <View style={styles.modalView}>  
+         
+        <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center', position: 'absolute', zIndex: 100, backgroundColor: '#B5838D', borderBottomLeftRadius: 5, borderBottomRightRadius: 5, borderTopLeftRadius: 5, borderTopRightRadius: 5 }}> Rating : {average} </Text>
+
+      <View style = {{flex: 1, marginTop: height/-14, marginRight: width }} >    
       <Swiper  
       containerStyle={{backgroundColor: "transparent"}} 
       cards = {profiles2}  
@@ -81,9 +143,10 @@ const Footer = () => {
       cardIndex={0}  
       verticalSwipe={false}   
       horizontalSwipe={false}
-      renderCard={(card) => card ? (   
+      renderCard={(card) => card ? (    
         <View key = {card.id} style = {{borderTopLeftRadius: 20,
-          borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignSelf: 'center'}}> 
+          borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignSelf: 'center'}}>   
+            
             <Image style = {{height: '93%', width: width*.93, borderTopLeftRadius: 20,
           borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20}} source={{uri: card.photoURL}}/>     
   

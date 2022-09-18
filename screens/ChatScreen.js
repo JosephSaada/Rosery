@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar, SafeAreaView } from 'react-native'; 
+import React from 'react'
+import {View, StyleSheet, Platform} from 'react-native'; 
 import Header from '../components/Header'; 
 import ChatList from '../components/ChatList';
 import Footer from '../components/Footer'; 
-import { AppOpenAd, InterstitialAd, RewardedAd, BannerAd, TestIds, BannerAdSize } from 'react-native-google-mobile-ads'; 
+import { BannerAd, TestIds, BannerAdSize } from 'react-native-google-mobile-ads'; 
 
 
 const ChatScreen = () => {   

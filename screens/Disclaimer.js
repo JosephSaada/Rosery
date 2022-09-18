@@ -1,5 +1,5 @@
 import React from 'react' 
-import {View, Text, TouchableOpacity, StyleSheet, Platform, StatusBar, ScrollView, Button, Image} from 'react-native'; 
+import {View, Text, TouchableOpacity, StyleSheet, Platform, ScrollView} from 'react-native'; 
 import {useNavigation} from '@react-navigation/core' 
 import { auth } from '../firebase'  
 import {Ionicons} from "@expo/vector-icons";   

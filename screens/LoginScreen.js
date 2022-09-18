@@ -1,4 +1,4 @@
-import { View, Text, Button, StyleSheet, KeyboardAvoidingView, TextInput, TouchableOpacity, Image, StatusBar, Platform,  } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, StatusBar, Platform} from 'react-native';
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/core'
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
@@ -93,7 +93,7 @@ const LoginScreen = () => {
         </TouchableOpacity> 
 
         { <Text style={{fontSize:20, color: "#f8f8ff", textAlign: "center", fontWeight: "bold", marginTop: 10}}> 
-        Make someone's day today
+        Find your true rating today! 
     </Text> } 
 
       </View>

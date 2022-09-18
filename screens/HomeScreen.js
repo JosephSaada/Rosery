@@ -1,34 +1,45 @@
-import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
-import {View, Text, Button,TouchableOpacity, StyleSheet, Image, Platform, StatusBar, Modal, TextInput} from 'react-native'; 
+import React, {useEffect, useLayoutEffect, useState} from 'react';
+import {View, Text, StyleSheet, Image} from 'react-native'; 
 import {useNavigation} from '@react-navigation/core' 
 import { auth } from '../firebase'
 import Swiper from 'react-native-deck-swiper'; 
-import { onSnapshot, doc, collection, getDocs, setDoc, query, getDoc, serverTimestamp, addDoc} from '@firebase/firestore'; 
+import { onSnapshot, doc, collection, getDocs, setDoc, query, getDoc, serverTimestamp} from '@firebase/firestore'; 
 import {db} from "../firebase"; 
 import generateId from '../lib/generateId'; 
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'; 
+import SelectList from 'react-native-dropdown-select-list'
 
 const Homescreen = () => {  
     const navigation = useNavigation();  
     const [profiles, setProfiles] = useState([]);    
 
-    const [compliment, setCompliment] = useState('') 
+    const [compliment, setCompliment] = useState('')  
+
+    const data = [ 
+      {key:'0', value: ''},
+      {key:'1', value: '1'},
+      {key:'2', value: '2'},
+      {key:'3', value: '3'},
+      {key:'4', value: '4'},
+      {key:'5', value: '5'},
+      {key:'6', value: '6'}, 
+      {key:'7', value: '7'}, 
+      {key:'8', value: '8'}, 
+      {key:'9', value: '9'}, 
+      {key:'10', value: '10'},
+    ]
 
     'use strict';
     var React = require('react-native');
     var {Dimensions} = React; 
     var width = Dimensions.get('window').width;  
-
-    //const swiperef = useRef(null);   
+  
 
      useLayoutEffect(() =>  
       onSnapshot(doc(db, 'users', auth.currentUser.uid), snapshot => {  
         if (!snapshot.exists()) 
         navigation.navigate("Modal")
-      }), []);  
-
-
-      
+      }), []); 
 
 
     useEffect(() => { 
@@ -109,12 +120,15 @@ const Homescreen = () => {
         setCompliment('');
       }}  
       onSwipedRight={(cardIndex)=> { 
-        swipeRight(cardIndex);   
-        if (compliment != ''){  
-          const userSwiped = profiles[cardIndex]; 
-          setDoc(doc(db, 'users', auth.currentUser.uid, 'Compliments', userSwiped.id), compliment) 
+        swipeRight(cardIndex);    
+        if (!profiles[cardIndex]) return; 
+        if (compliment != ''){   
+          const userSwiped = profiles[cardIndex];  
+          setDoc(doc(db, 'users', userSwiped.id, 'ratings', auth.currentUser.uid), { 
+            rating: parseInt(compliment)
+          })   
+        setCompliment('');   
         }
-        setCompliment('');  
       }}  
       
       renderCard={(card) => card ? (    
@@ -134,19 +148,18 @@ const Homescreen = () => {
 ( 
  <View style = {{backgroundColor: "#E5989B", height: '85%', borderTopLeftRadius: 20,
  borderTopRightRadius: 20, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, alignItems: 'center', justifyContent: 'center'}}> 
-  <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> Try complimenting youself today</Text>
+  <Text style={{fontWeight:"bold", color: '#f8f8ff', fontSize: 25, textAlign: 'center'}}> No one left to rate</Text>
   </View>  
 )}
       />
       </View>     
-      <View style = {styles.inputContainer}>  
-      <TextInput 
-        placeholder ="Compliment"  
-        value={compliment}
-        onChangeText={text => setCompliment(text)} 
-        style={styles.input}  
-        maxLength={75}
-      />    
+      <View style = {styles.inputContainer}>   
+      <SelectList 
+      data = {data} 
+      setSelected={setCompliment} 
+      placeholder="Select Rating" 
+      dropdownTextStyles={{fontWeight:'bold'}}
+      />
       </View>   
     <Footer> </Footer> 
    </View> 
@@ -166,7 +179,7 @@ const styles = StyleSheet.create({
     width: '80%', 
     alignSelf: 'center',  
     position: 'absolute', 
-    marginTop: 50,
+    marginTop: 75,
   },
   input: {
     backgroundColor: '#F8F0E3',

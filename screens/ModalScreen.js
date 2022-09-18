@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, Button, Platform, TextInput, TouchableOpacity, StatusBar, KeyboardAvoidingView, ScrollView} from 'react-native'
+import { View, Text, StyleSheet, Image, Platform, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView} from 'react-native'
 import React from 'react'  
 import { auth } from '../firebase' 
 import { useState, useEffect } from 'react';
@@ -95,11 +95,11 @@ const ModalScreen = () => {
       <Text style={{textAlign: 'center', color: 'black', fontWeight: 'bold', fontSize: 40}}>Hi {str} </Text> 
       
 
-        <Text style={styles.InputNames}>Name or thing to show off</Text>  
+        <Text style={styles.InputNames}>Name</Text>  
         <TextInput 
         value={name} 
         onChangeText={setname}
-        placeholder ="something cool"  
+        placeholder ="Name"  
         placeholderTextColor="#f8f8ff"  
         style={styles.input}
         maxLength={25}
@@ -111,25 +111,25 @@ const ModalScreen = () => {
       <TextInput 
           value={age} 
           onChangeText={setage}
-          placeholder ="any age is the age to do something beautiful"  
+          placeholder ="Age"  
           placeholderTextColor="#f8f8ff"    
           keyboardType='numeric'
           maxLength={3}
           style={styles.input} 
         />    
 
-      <Text style={styles.InputNames}>Decribe something about you</Text>  
+      <Text style={styles.InputNames}>Bio</Text>  
 
       <TextInput 
           value={job} 
           onChangeText={setjob}
-          placeholder ="or about something you made"  
+          placeholder ="Bio"  
           placeholderTextColor="#f8f8ff"   
           maxLength={30}
           style={styles.input}
         />   
         
-  <Text style={styles.InputNames}> You/something you're proud of</Text>   
+  <Text style={styles.InputNames}> You</Text>   
     <View style={styles.buttonContainer}> 
 
         <TouchableOpacity

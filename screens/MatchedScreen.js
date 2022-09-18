@@ -7,12 +7,12 @@ const MatchedScreen = () => {
     const navigation = useNavigation();
     const {params} = useRoute(); 
 
-    const {loggedInProfile, userSwiped} = params; 
+    const {userSwiped} = params; 
  
   return (
     <View style={styles.container}> 
       <Text style={{fontSize:40, color: "#f8f8ff", textAlign: "center", fontWeight: "bold"}}> 
-        A new foe has appeared!
+        Describe your rating !
     </Text>   
     <ImageBackground style = {{height: 471, width: 300,  position: 'absolute'}} source={require('../assets/glow.png')}> 
 

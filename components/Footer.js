@@ -85,39 +85,71 @@ const Footer = () => {
       return unsub;
     }, [db]) 
 
-    //console.log(ratingProfiles)  
 
-    console.log(Object.assign(ratingProfiles))
+      let count = 0; 
+      let average = 0;
+      const [one, two, three, four, five, six, seven, eight, nine, ten] = Object.assign(ratingProfiles);    
+      try{ 
+        if (one.rating) {   
+          average += one.rating;   
+          count++; 
+      }  } catch {}  
+      try{ 
+        if (two.rating) {   
+          average += two.rating;   
+          count++; 
+      }  } catch {} 
+      try{ 
+        if (three.rating) {   
+          average += three.rating;   
+          count++; 
+      }  } catch {} 
+      try{ 
+        if (four.rating) {   
+          average += four.rating;   
+          count++; 
+      }  } catch {} 
+      try{ 
+        if (five.rating) {   
+          average += five.rating;   
+          count++; 
+      }  } catch {} 
+      try{ 
+        if (six.rating) {   
+          average += six.rating;   
+          count++; 
+      }  } catch {}  
+      try{ 
+        if (seven.rating) {   
+          average += seven.rating;   
+          count++; 
+      }  } catch {} 
+      try{ 
+        if (eight.rating) {   
+          average += eight.rating;   
+          count++; 
+      }  } catch {} 
+      try{ 
+        if (nine.rating) {   
+          average += nine.rating;   
+          count++; 
+      }  } catch {} 
+      try{ 
+        if (ten.rating) {   
+          average += ten.rating;   
+          count++; 
+      }  } catch {} 
+      //console.log(Math.round((average/count) * 10) / 10)
+      const getAverage = () => { 
+        return Math.round((average/count) * 10) / 10
+      } 
 
-    for (const [object] in Object.assign(ratingProfiles)){
-      console.log(object)
+    try{
+    average = getAverage();   
+    }catch{ 
+    average = 10
     }
 
-    const [one, two, three, four, five, six, seven, eight, nine, ten] = Object.assign(ratingProfiles);  
-
-    //console.log(one.rating)  
-    //console.log(two.rating)
-
-    const average = 10;  
-
-const getAverage = () => {
-    const ratingProfiles2 = {...ratingProfiles} 
-    const [y, z] = Object.entries(ratingProfiles2).flat();  
-
-    const sum = 0; 
-    const count = 0;
-
-    for (const [key, value] of Object.entries(z)) {
-      console.log(`${value}`);  
-
-      //sum = sum + parseInt(value) 
-      //count += 1
-     } 
-
-    //average = sum/count 
-  } 
-
- // getAverage();
 
   return (
     <View style={styles.container}>  

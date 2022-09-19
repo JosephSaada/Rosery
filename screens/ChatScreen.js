@@ -15,7 +15,7 @@ const ChatScreen = () => {
      <ChatList />    
      <View style={{alignItems: 'center', justifyContent: 'center'}}>
      <BannerAd 
-      unitId={TestIds.BANNER}  
+      unitId={adUnitId}  
       size={BannerAdSize.FULL_BANNER}  
       requestOptions={{ 
         requestNonPersonalizedAdsOnly: true,

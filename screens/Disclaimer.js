@@ -45,7 +45,7 @@ const Disclaimer = () => {
         Information
     </Text>
     <Text style={{fontSize:20, color: "#f8f8ff", textAlign: "center", marginBottom: -45}}>
-        Privacy Policy: Be nice and have fun! {'\n \n'} 
+        Privacy Policy: Be truthful and have fun! {'\n \n'} 
         Terms and Condtions: uhhh same thing as above {'\n \n'} 
         <Text style={{fontWeight: "bold",fontSize: 40 }}> Credits:</Text> {'\n \n'} 
         <Text style={{fontWeight: "bold"}}> Devolper:</Text>{'\n \n'}  Joseph Saada {'\n \n'}  
@@ -70,7 +70,7 @@ const Disclaimer = () => {
     </ScrollView>    
     <View style={{alignItems: 'center', justifyContent: 'center'}}>
      <BannerAd 
-      unitId={TestIds.BANNER}  
+      unitId={adUnitId}  
       size={BannerAdSize.FULL_BANNER}  
       requestOptions={{ 
         requestNonPersonalizedAdsOnly: true,

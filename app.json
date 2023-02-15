@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-project",
-    "slug": "my-project",
+    "name": "Rosery",
+    "slug": "Rosery",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/rosery2.png",
@@ -26,14 +26,20 @@
         "foregroundImage": "./assets/rosery2.png",
         "backgroundColor": "#B5838D"
       },
-      "package": "com.roasterino.app"
+      "package": "com.roasterino.app",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/rosery2.png"
-    } 
-  }, 
+    },
+    "extra": {
+      "eas": {
+        "projectId": "894a9502-e998-4446-9aa0-1dc324281567"
+      }
+    }
+  },
   "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-8819301922359044~8562308035", 
+    "android_app_id": "ca-app-pub-8819301922359044~8562308035",
     "ios_app_id": "ca-app-pub-8819301922359044~8626435957"
-  } 
+  }
 }

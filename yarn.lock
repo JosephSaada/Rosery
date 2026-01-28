@@ -9444,11 +9444,12 @@ react-native-codegen@^0.0.17:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
-react-native-deck-swiper@^2.0.7:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-deck-swiper/-/react-native-deck-swiper-2.0.8.tgz#b335eeecaae40c8052ada1bb43c09c10664a13f3"
-  integrity sha512-dsegRnT2ZavOiW41XB/m8GO+saYd3cZ3tkpqXjgP5mxlanQRLsbtCDtdV14vH4fqBghVRJ8zE7aHpnxPyAZGvg==
+react-native-deck-swiper@^2.0.19:
+  version "2.0.19"
+  resolved "https://registry.yarnpkg.com/react-native-deck-swiper/-/react-native-deck-swiper-2.0.19.tgz#c54f509373cff214e2293638273c24383dabc881"
+  integrity sha512-NQBxIVgiTA/k3yWTqvsyjPiNup/jRatLUSKkoBxfNrxUNXKShrHtUIzK4hM8XCvJ+eyzmQqItCGd113fjAGRYA==
   dependencies:
+    lodash "^4.17.21"
     prop-types "15.5.10"
 
 react-native-dropdown-select-list@^1.0.21:

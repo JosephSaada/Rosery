@@ -1903,10 +1903,10 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
-"@iabtcf/core@^1.4.0":
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/@iabtcf/core/-/core-1.5.3.tgz#81a3c651e8ec3d1893d48e978d446dc143140df0"
-  integrity sha512-DZsenDL6uz/jULc/PlWs9HA2eDHkAcL+JiZ5TtB1O5ZSwZ2BMyJc4I5qC+j/7BZFPXqaHRbGQ7QpbxmcHYLw1Q==
+"@iabtcf/core@^1.5.6":
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/@iabtcf/core/-/core-1.5.6.tgz#92568d89252fbf205aa65836703cb0a52e812382"
+  integrity sha512-u2q9thI9vLurYZdGtyJsDYOqoeLc4EgQsYGSc+UVibYII61B/ENJPZS6eFlML1F0hSoTR/goptpo5nGRDkKd2w==
 
 "@jest/create-cache-key-function@^27.0.1":
   version "27.5.1"
@@ -9656,12 +9656,12 @@ react-native-dropdown-select-list@^2.0.5:
   resolved "https://registry.yarnpkg.com/react-native-dropdown-select-list/-/react-native-dropdown-select-list-2.0.5.tgz#3626b2bf9b9c5e157b02f60cf36174cde7550056"
   integrity sha512-TepbcagQVUMB6nLuIlVU2ghRpQHAECOeZWe8K04ymW6NqbKbxuczZSDFfdCiABiiQ2dFD+8Dz65y4K7/uUEqGg==
 
-react-native-google-mobile-ads@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-google-mobile-ads/-/react-native-google-mobile-ads-7.0.1.tgz#c6868eb1b911857e7f086fa8dc7e52e7e18e4f87"
-  integrity sha512-G7oP/ETRa58i1he/bQPvGXE3Vcs1KdtY3B8inmxLaMrjeSaWg69dZn4yVrSR9IK/MOA9fcLNmsEQgLBk15COMw==
+react-native-google-mobile-ads@^16.0.2:
+  version "16.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-google-mobile-ads/-/react-native-google-mobile-ads-16.0.2.tgz#1a7aa34ee012901295fc542e7559fcb135b6e140"
+  integrity sha512-rBkpkYfwX68/D+Wy7ufIr8Tvl8VTakH/kRm/DDudB2fPCsJHBOTEgPEcwdrvDg1sDO/fxv7F52VvBhHHo7RFvw==
   dependencies:
-    "@iabtcf/core" "^1.4.0"
+    "@iabtcf/core" "^1.5.6"
     use-deep-compare-effect "^1.8.1"
 
 react-native-gradle-plugin@^0.0.6:

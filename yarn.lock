@@ -4870,10 +4870,10 @@ expo-app-auth@~11.1.0:
     "@expo/config-plugins" "^4.0.2"
     invariant "^2.2.4"
 
-expo-application@^4.1.0:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/expo-application/-/expo-application-4.2.2.tgz#c9500819723c59eaee5ca9832bf17d1fd4139f74"
-  integrity sha512-bFEaFRUdV6aK2iBd+HzkHNPYsyj88EAhaQW5leznmO0qQMJxpAQ3eoUXMey1hfDBh1qgkkHgSyCZ9BIgMAGJ1g==
+expo-application@^7.0.8:
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/expo-application/-/expo-application-7.0.8.tgz#320af0d6c39b331456d3bc833b25763c702d23db"
+  integrity sha512-qFGyxk7VJbrNOQWBbE09XUuGuvkOgFS9QfToaK2FdagM2aQ+x3CvGV2DuVgl/l4ZxPgIf3b/MNh9xHpwSwn74Q==
 
 expo-application@~4.1.0:
   version "4.1.0"

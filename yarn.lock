@@ -9451,10 +9451,10 @@ react-native-deck-swiper@^2.0.7:
   dependencies:
     prop-types "15.5.10"
 
-react-native-dropdown-select-list@^1.0.21:
-  version "1.0.21"
-  resolved "https://registry.yarnpkg.com/react-native-dropdown-select-list/-/react-native-dropdown-select-list-1.0.21.tgz#e4e3ec26770c38265f80eade16f0de6a82a60b1d"
-  integrity sha512-iwpSYJdZQQaLSFh7tGaffMJY/6FGAIlvG0GPoOrT9Hd7+mWjSfm1xarMIHzNBCNhMRimf0eImIeels4T+EijYQ==
+react-native-dropdown-select-list@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-select-list/-/react-native-dropdown-select-list-2.0.5.tgz#3626b2bf9b9c5e157b02f60cf36174cde7550056"
+  integrity sha512-TepbcagQVUMB6nLuIlVU2ghRpQHAECOeZWe8K04ymW6NqbKbxuczZSDFfdCiABiiQ2dFD+8Dz65y4K7/uUEqGg==
 
 react-native-google-mobile-ads@^7.0.1:
   version "7.0.1"
